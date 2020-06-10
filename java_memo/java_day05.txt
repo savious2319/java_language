@@ -1,0 +1,107 @@
+day05
+
+1. 배열
+  1) 배열
+	정수형 int 배열선언 (5개)
+
+	int[]arNum;
+	arNum = new int[5];
+
+	//초기값 10, 20, 30
+	arNum[0] = 10;
+	arNum[1] = 20;
+	arNum[2] = 30;
+
+	//배열의 길이 : arNum.length
+	//int size = new int[5].length;
+
+	(1) String  char[ ]의 집합
+		String msg = "1234";
+
+		int size = msg.length; <-  에러
+		int size = msg.length(); <- 메서드로 알아야 한다
+		'3' -> msg.charAt(2)	
+		char ch = msg.charAt(2)
+
+	String msg = "A";
+	//msg = "AB";  <- 비효율적
+	msg += "B";  //msg = msg + "B";
+ 
+		num = 100;
+		String strNum = num + "";   //문자열로 만든 다음에 String strNum에 집어넣는다
+		String strNum = 10.1 + "111";
+		String strNum = 10.1 + "111" + "222";
+				"10.111222"
+
+				char + int
+				'A'   + 1  //작은 데이터와 큰 데이터를 만나면 큰 데이터로 연산됨
+					// 66이 나옴
+
+					(char)('A'   + 1) + ""
+					//연산자 우선순위때문에 (char) 형변환을 먼저 해야함
+					//"B"
+	syso(msg) -> AB	
+
+  2) 난수(임의의 수)
+	C언어
+	//srand( (unsigned)time(NULL) );
+	//rand()
+
+	자바
+	(1)   Random 클래스
+		nextInt(범위값) 범위값 : 가져오고 싶은 범위
+		-인스턴스 메서드			
+		-리턴값이 int
+	(2)   Math 클래스
+		random() 메서드 
+		스태틱 메서드
+		-리턴값이 0.0 ~ 1.0 사의 값
+		   (0.0 <= 난수 <1.0)
+
+2. 클래스
+  1) 필드(==멤버변수)  < 인스턴스 변수
+  2) 메서드
+  3) 제어문자(public, protected, default, private)
+  4) 클래스 모델링
+  5) 메서드 종류
+	(1) 생성자
+	(2) get/set property (겟셋 메서드)
+	(3) 비즈니스 메서드 (일반 메서드)
+
+3. 클래스 2
+  1) 추상클래스
+  2) 인터페이스
+-----------------------------------------------------------------------------
+
+
+alt + shift + z ==> for문 자동 완성
+
+
+
+
+
+
+
+
+
+
+
+   
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,138 @@
+day04
+
+1. 배열
+
+   C언어 배열 : int ar[ 첨자(==index) ]; 배열선언
+   자바 배열 : 동적 메모리, index, length
+
+   * 참조형타입이다!!
+   참조타입 : 클래스 + 배열
+	클래스 참조변수(==객체) = 인스턴스;
+	Abc 클래스 -> new Abc();
+            Abc   객체   -> new Abc();
+
+   * 배열을 선언하는 방법
+   1)
+	참조변수 = 배열인스턴스;
+
+	참조변수 => 타입[] 배열명; (==객체)
+	  예) int [] ar;    ar이라는 참조변수를 만들었다.
+		        ar배열 선언!
+     2)
+	       ar = new int[5];     new int[5]  <---- 배열 인스턴스  (new는 heap에다가 만든다)
+
+    3) 변수를 넣어서 선언할 수 있다.
+	       int  num = 0;
+	      Scanner로 입력받기
+	       ar = new int[num];  처음 선언할 때, 변수로 선언가능!!
+			       왜? 동적 메모리에 할당하기때문에 변수로 할당 받을 수 있다
+	      ar = new int[100];
+
+    4)  초기값이 있는 배열 선언
+                    국어 영어 수학이 각각 10, 11, 12 점이다!
+
+	(1) int ar[ ] = new int [ ] {10,11,12};
+		   이때, 인스턴스 [] 안에다 초기값을 넣으면 에러!
+		    int [] ar = new int [3] {10,20, 30}; <-- 에러!  
+		    int [] ar = new int [ ] {10,20, 30};  <-- 이렇게 해야함
+
+	(2) int ar [ ] = {10, 20, 30}; 이렇게 선언하는게 일반적
+
+	그럼, (1) 방식은 왜 필요할까?
+	int [] ar;
+
+	ar = {10, 20, 30}; <--- 에러!
+	
+	ar = new int[] {10,20,30};  // 참조변수에 인스턴스 초기값을 갖고 대입할 때, 필요하다!
+
+ ※ String 배열
+	String str = "abcde";   char [] ar = new char[] {'a', 'b' ... 'e'};
+			   char [] ar = {'a', 'b' ... 'e'};
+
+	str은 참조변수다!  str. 하면 String에 만들어 놓은 메소드를 사용해서 배열을 관리할 수 있다!
+	'a'를 가져오고 싶다!!!!
+   	(x) :  str[0] 에러
+	(0) : str.charAt(0); --> index number    객체.메서드
+
+    5) 배열의 길이
+	배열 인스터스는 기본적으로 변수 하나를 갖고 있는데,,,
+	length 라는 변수다!
+
+	int [] ar = {10,20,30};
+	ar.length : 배열의 길이!!  
+
+	String msg = "abc";
+	msg.length() : 3  <---- String만 메서드를 쓴다
+
+	length : Integer 클래스 wrapper 클래스 중에 하나
+	wrapper : 포장하다 감싸다!!!
+		Double, Boolean....
+	-100 int를  -> 객체 100 으로 감싸는것
+		Integer num = new Integer(100);
+		Integer num = 100l 1.6 이상에서는 허용!!
+		Array 클래스에서 length를 갖고있다.
+
+    6) 2차원 배열
+	int [] ar1 = {10,20};
+	int [] ar2 = {11,21,22};
+	int [] ar3 = {23,34,45,56};
+
+	int [][] arr = {ar1, ar2, ar3};
+
+	arr[0].length 2
+	arr[1].length 3
+	arr[2].length 4
+
+	for(int i = 0; i < arr.length; i++){
+	    syso(arr[i].length) 
+
+	
+
+	for(int i = 0; i < arr.length; i++){
+		for(int j = 0l; j <arr[i].length; j++){
+
+	  	  syso("각 요소 값 : " + arr[i][j]);
+		}
+	}
+
+
+   7) 2차원 배열 선언
+	int [ ] arr [ ] = {
+		{10, 20, 30},
+		{0},
+		new int[6]
+
+	};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,76 @@
+day02
+
+자료형
+1. 기본자료형
+   boolean : true, false  논리값이 저장, 1byte, is-접두사 붙이는 것이 좋습니다.
+   char : 2byte, 유니코드 기반 - \u0000으로 초기화하지만 ' '로 초기화하는것이 간편
+   byte : 파일입출력, (c언어의 char와 호환)
+   short 
+   int : 표준 4byte
+   long : 8byte,접두사 L
+   float : 4byte 접두사 L
+   double : 표준 8byte
+2. 참조자료형(클래스,배열..)
+ : 클래스를 이용해서 만드는 자료형들
+ : 인스턴스 -> new 
+   -> 클래스를 사용할 수 있는 상태로 만드는 것(메모리에 실제로 생성하는 것)
+   -> 실체화하다, 정의하다
+   -> 동적메모리에만 생성됩니다.(heap)
+  객체 : 인스턴스를 대입받는 변수 (==★참조변수★)
+  메서드 호출 :
+	1) 객체.메소드();
+	2) new Scanner(System.in).next();	객체를 만들지 않고 바로 사용
+	3) 클래스.메서드();
+	-> 객체를 생성하는 과정 없이 클래스에서 바로 메소드를 호출
+	-> static 키워드를 사용
+	-> static 메서드(){}		<--클래스 메소드
+	-> static 인스턴스변수	<--클래스 변수
+  class Member{ 
+	int kor;
+	int getTot(){}	
+   }
+   홍길동 객체를 만들고, 각각의 멤버(필드, 메서드)를 호출해 봅니다.
+   Member hgd = new Member();
+   hgd.getTot();
+   hgd.kor = 10;
+	->hgd가 객체
+  객체 사용 안하고 인스턴스로만 
+  new Member().getTot();
+  new Member().kor = 10;	getTot, kor의 new Member는 서로 다릅니다.
+	->킬러블 객체(1회용 객체)
+3. 입력받기
+  Scanner <--  java.util 이라는 패키지에 들어 있는 클래스
+   - 많은 메소드 들이 모여 있다.
+   - next(), nextLine(), nextInt(), nextDouble()...
+    -next() -> 단어 단위
+    -nextLine() -> 문장 단위 (공백 포함 엔터값까지 읽어옵니다.)
+   
+**자바 진도
+-프로젝트 class 만들기
+-입력받기 (GUI 환경)
+-입력받기 예제
+-연산자와 제어문
+-배열
+-클래스
+-예외처리
+-object 클래스
+-util 패키지
+-이너클래스
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
