@@ -95,7 +95,8 @@ public class Array05_05_백성민 {
 //		}
 
 		
-//		for (int i = 1; i < arNum.length; i++) {  // i = 0, j = i +1   j > i
+//		for (int i = 1; i < arNum.length; i++) {  
+												  // i와 i의 앞의 값(j)만 비교
 //			for (int j = i-1; j < i; j++) {
 //				if (arNum[i] != arNum[j]) {  
 //					System.out.println(arNum[j] + " : " + tempCnt[j] + "개");  // arNum[i]
@@ -108,12 +109,12 @@ public class Array05_05_백성민 {
 //
 //		} // i for
 		
-		for (int i = 0; i < arNum.length; i++) {  // i = 0, j = i +1   j > i
-			for (int j = i+1; j > i; j++) {
+		for (int i = 0; i < arNum.length-1; i++) {  // i와 i의 뒤의 값(j)만 비교  	arNu.length-1
+			for (int j = i+1; j > i; j--) {			// i = 0, j = i +1   j > i  j--
 				if (arNum[i] != arNum[j]) {  
 					System.out.println(arNum[i] + " : " + tempCnt[i] + "개");  // arNum[i]
 				}
-				if(j == (arNum.length-1)) {	
+				if(j == arNum.length-1) {	// j(19) == arNum.length-1 (19) 
 					System.out.println(arNum[j] + " : " + tempCnt[j] + "개");  // arNum[j]
 				}
 			}// j for
