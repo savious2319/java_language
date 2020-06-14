@@ -5,9 +5,9 @@ import java.util.Scanner;
 class Birthday {
 
 	private String name;
-	private String year;
-	private String month;
-	private String day;
+	private int year;
+	private int month;
+	private int day;
 
 //	public ClassTest06_1() {
 //		
@@ -17,13 +17,13 @@ class Birthday {
 		this.name = name;
 	}
 
-	public Birthday(String name, String year) {
+	public Birthday(String name, int year) {
 
 		this.name = name;
 		this.year = year;
 	}
 
-	public Birthday(String name, String year, String month, String day) {
+	public Birthday(String name, int year, int month, int day) {
 
 		this.name = name;
 		this.year = year;
@@ -42,30 +42,30 @@ class Birthday {
 		this.name = name;
 	}
 
-	public String getYear() {
+	public int getYear() {
 		return year;
 	}
 
-	public void setYear(String year) {
+	public void setYear(int year) {
 
 		this.year = year;
 	}
 
-	public String getMonth() {
+	public int getMonth() {
 		return month;
 	}
 
-	public void setMonth(String month) {
+	public void setMonth(int month) {
 //		if(1<=Integer.parseInt(month) && 12>=Integer.parseInt(month)) {
 //		}
 		this.month = month;
 	}
 
-	public String getDay() {
+	public int getDay() {
 		return day;
 	}
 
-	public void setDay(String day) {
+	public void setDay(int day) {
 //		if(1<=Integer.parseInt(day) && 31>=Integer.parseInt(day)) {
 //		}
 		this.day = day;
@@ -87,10 +87,7 @@ public class ClassTest06_1_01 {
 
 	static void addBirthdayData(FriendBirthday[] birthday) {
 		String userInput = "";
-		;
-		String year = "";
-		String month = "";
-		String day = "";
+		
 
 		while (true) {
 			System.out.println(birthday[1].getName() + "님과 " + birthday[2].getName() + "님 중에 어느분 데이터를 추가 하시겠습니까? ");
@@ -98,25 +95,20 @@ public class ClassTest06_1_01 {
 			if (userInput.equals(birthday[1].getName())) {
 
 				System.out.print("월을 입력해 주세요(1월 ~ 12월 사이): ");
-				month = sc.next();
-				birthday[1].setMonth(month);
+				birthday[1].setMonth(sc.nextInt());
 				System.out.println(birthday[1].getMonth());
 				System.out.print("일을 입력해 주세요(1일 ~ 31일 사이): ");
-				day = sc.next();
-				birthday[1].setDay(day);
+				birthday[1].setDay(sc.nextInt());
 				System.out.println("데이터가 추가 되었습니다");
 				break;
 			} else if (userInput.equals(birthday[2].getName())) {
 
 				System.out.print("년도를 입력해 주세요(1990년 ~ 2020년 사이) : ");
-				year = sc.next();
-				birthday[2].setYear(year);
+				birthday[2].setYear(sc.nextInt());
 				System.out.print("월을 입력해 주세요(1월 ~ 12월 사이): ");
-				month = sc.next();
-				birthday[2].setMonth(month);
+				birthday[2].setMonth(sc.nextInt());
 				System.out.print("일을 입력해 주세요(1일 ~ 31일 사이): ");
-				day = sc.next();
-				birthday[2].setDay(day);
+				birthday[2].setDay(sc.nextInt());
 				System.out.println("데이터가 추가 되었습니다");
 				break;
 			} else {
@@ -127,10 +119,6 @@ public class ClassTest06_1_01 {
 
 	static void changeBirthdayData(FriendBirthday[] birthday) {
 		String userInput = "";
-		String newYear = "";
-		String newMonth = "";
-		String newDay = "";
-
 		while (true) {
 			System.out.println("어느 분의 데이터를 변경 하시겠습니까? \n" + birthday[0].getName() + "\n" + birthday[1].getName() + "\n"
 					+ birthday[2].getName() + "\n");
@@ -138,40 +126,31 @@ public class ClassTest06_1_01 {
 			if (userInput.equals(birthday[0].getName())) {
 
 				System.out.print("년도를 입력해 주세요 : ");
-				newYear = sc.next();
-				birthday[0].setYear(newYear);
+				birthday[0].setYear(sc.nextInt());
 				System.out.print("월을 입력해 주세요 : ");
-				newMonth = sc.next();
-				birthday[0].setMonth(newMonth);
+				birthday[0].setMonth(sc.nextInt());
 				System.out.print("일을 입력해 주세요 : ");
-				newDay = sc.next();
-				birthday[0].setDay(newDay);
+				birthday[0].setDay(sc.nextInt());
 				System.out.println(birthday[0].getName() + "님의 데이터 변경이 완료되었습니다");
 				break;
 			} else if (userInput.equals(birthday[1].getName())) {
 
 				System.out.print("년도를 입력해 주세요 : ");
-				newYear = sc.next();
-				birthday[0].setYear(newYear);
+				birthday[0].setYear(sc.nextInt());
 				System.out.print("월을 입력해 주세요 : ");
-				newMonth = sc.next();
-				birthday[0].setMonth(newMonth);
+				birthday[0].setMonth(sc.nextInt());
 				System.out.print("일을 입력해 주세요 : ");
-				newDay = sc.next();
-				birthday[0].setDay(newDay);
+				birthday[0].setDay(sc.nextInt());
 				System.out.println(birthday[1].getName() + "님의 데이터 변경이 완료되었습니다");
 				break;
 			} else if (userInput.equals(birthday[2].getName())) {
 
 				System.out.print("년도를 입력해 주세요 : ");
-				newYear = sc.next();
-				birthday[0].setYear(newYear);
+				birthday[0].setYear(sc.nextInt());
 				System.out.print("월을 입력해 주세요 : ");
-				newMonth = sc.next();
-				birthday[0].setMonth(newMonth);
+				birthday[0].setMonth(sc.nextInt());
 				System.out.print("일을 입력해 주세요 : ");
-				newDay = sc.next();
-				birthday[0].setDay(newDay);
+				birthday[0].setDay(sc.nextInt());
 				System.out.println(birthday[2].getName() + "님의 데이터 변경이 완료되었습니다");
 				break;
 			} else {
@@ -201,13 +180,10 @@ public class ClassTest06_1_01 {
 			// birthday[i] = new ClassTest06_1();
 		}
 
-		birthday[0] = new FriendBirthday("홍길동", "1945", "5", "2");
-		birthday[1] = new FriendBirthday("박문수", "1945", "없음", "없음");
-		birthday[2] = new FriendBirthday("이순신", "없음", "없음", "없음");
+		birthday[0] = new FriendBirthday("홍길동", 1945, 5, 2);
+		birthday[1] = new FriendBirthday("박문수", 0,0,0);
+		birthday[2] = new FriendBirthday("이순신", 0,0,0);
 
-		FriendBirthday hgd = new FriendBirthday("홍길동", "1945", "5", "2");
-		FriendBirthday pms = new FriendBirthday("박문수", "1945", "데이터 없음", "데이터 없음");
-		FriendBirthday iss = new FriendBirthday("이순신", "데이터 없음", "데이터 없음", "데이터 없음");
 		
 		//배열 하나씩만 넘긴다
 
