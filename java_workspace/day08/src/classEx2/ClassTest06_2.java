@@ -22,6 +22,10 @@ class Musician {
 		this.instrument = instrument;
 	}
 
+	public Musician() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getrecordSales() {
 		return recordSales;
 	}
@@ -52,6 +56,13 @@ class Musician {
 
 	public void setInstrument(String instrument) {
 		this.instrument = instrument;
+	}
+	
+	public void setInitialize() {
+		this.name = null;
+		this.age = 0;
+		this.instrument = null;
+		this.recordSales = null;
 	}
  
 	void printMusician() {
@@ -89,6 +100,7 @@ public class ClassTest06_2 {
 			
 			for (int i = musician.length - 1; i > num - 1; i--) {
 				musician[i] = musician[i-1];
+				musician[i-1] = new Musician();
 			}
 			
 			System.out.println(musician[2].getName());
@@ -107,8 +119,10 @@ public class ClassTest06_2 {
 			recordSales = sc.nextLine();
 			musician[num-1].setrecordSales(recordSales);
 			
-			System.out.println(musician[2].getName());
-			
+			for(int i = 0;i<musician.length;i++) {
+				
+				System.out.println(musician[i].getName());
+			}
 			
 		}else {
 			System.out.println("\nError: There is no musician with that number");
@@ -177,19 +191,19 @@ public class ClassTest06_2 {
 	public static void main(String[] args) {
 		
 		// 객체 배열을 쓸 때는 기본생성자를 쓰는게 좋다
-//		for (int i = 0; i < musician.length; i++) {
-//			musician[i] = new Musician();
-//		}
-		musician[0] = new Musician("Al", "1",1,"1");
-		musician[1] = new Musician("Chick", "1",1,"1");
-		musician[2] = new Musician("Keith", "1",1,"1");
-		musician[3] = new Musician("James", "1",1,"1");
-		musician[4] = new Musician("Pat", "1",1,"1");
-		musician[5] = new Musician("Andy", "1",1,"1");
-		musician[6] = new Musician("John", "1",1,"1");
-		musician[7] = new Musician("Steve", "1",1,"1");
-		musician[8] = new Musician("Eric", "1",1,"1");
-		musician[9] = new Musician("Paul", "1",1,"1");
+		for (int i = 0; i < musician.length; i++) {
+			musician[i] = new Musician();
+		}
+//		musician[0] = new Musician("Al", "1",1,"1");
+//		musician[1] = new Musician("Chick", "1",1,"1");
+//		musician[2] = new Musician("Keith", "1",1,"1");
+//		musician[3] = new Musician("James", "1",1,"1");
+//		musician[4] = new Musician("Pat", "1",1,"1");
+//		musician[5] = new Musician("Andy", "1",1,"1");
+//		musician[6] = new Musician("John", "1",1,"1");
+//		musician[7] = new Musician("Steve", "1",1,"1");
+//		musician[8] = new Musician("Eric", "1",1,"1");
+//		musician[9] = new Musician("Paul", "1",1,"1");
 		
 		int choice = 0;
 		while(true) {
