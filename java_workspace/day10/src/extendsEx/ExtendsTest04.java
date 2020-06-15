@@ -122,6 +122,8 @@ class TV extends Product {
 		this.tvInfo();
 		
 	}
+	
+
 }
 class Snack extends Product{
 	
@@ -195,7 +197,10 @@ public class ExtendsTest04 {
 		
 		TV samsung = new TV("»ï¼º", 4500000, 1234, 34, 23, false, 100);
 		samsung.productInfo();
+		
 		Product lg = new TV("LG", 350000, 1235, 49, 34, true, 0);
+		
+		
 		
 		Product pro = null;
 		
