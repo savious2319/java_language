@@ -53,9 +53,51 @@ class Human{
 		this.dateOfBirth = dateOfBirth;
 	}
 	
+	
+	
+	public String getName() {
+		return name;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public String getHometown() {
+		return hometown;
+	}
+
+	public String getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public void setHometown(String hometown) {
+		this.hometown = hometown;
+	}
+
+	public void setDateOfBirth(String dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
+
 	void printInfo() {
 		System.out.println("==== 음악가 신상 정보 ====");
-		System.out.println("이름: "+name+"\n나이: "+age+"\n성별: "+gender+"\n고향: "+hometown+"\n생년월일: "+dateOfBirth);
+		System.out.println("이름: "+name+"\n나이: "+age+"\n성별: "+gender+"\n출신: "+hometown+"\n생년월일: "+dateOfBirth);
 	}
 	
 	
@@ -64,6 +106,7 @@ class Musician extends Human{
 	private String genre;
 	private String instrument;
 	private boolean isBand;
+	private String artistType;
 	private int numberOfFan;
 	private double youtubeSubscribers;
 	private int audience;
@@ -85,8 +128,6 @@ class Musician extends Human{
 		this.youtubeSubscribers = youtubeSubscribers;
 		this.audience = (r.nextInt(501)+0); //관객수 0 ~ 500명 랜덤
 		this.income = audience * 50000; //명당 공연 티켓료 5만원
-		
-		
 	}
 
 	public int getAudience() {
@@ -106,10 +147,31 @@ class Musician extends Human{
 	}
 
 	public double getYoutubeSubscribers() {
-		return youtubeSubscribers;
+		return Double.parseDouble(String.format("%.1f",youtubeSubscribers));
+	}
+	
+	public String getGenre() {
+		return genre;
+	}
+	public String getInstrument() {
+		return instrument;
 	}
 	
 	
+	public String getArtistType() {
+		return artistType;
+	}
+	
+	
+
+	public void setAudience(int a) {
+		this.audience = a;
+	}
+
+	public void setArtistType(String artistType) {
+		this.artistType = artistType;
+	}
+
 	public void setNumberOfFan(int numberOfFan) {
 		this.numberOfFan = numberOfFan;
 	}
@@ -118,9 +180,28 @@ class Musician extends Human{
 		this.youtubeSubscribers = youtubeSubscribers;
 	}
 	
-	public void setIncome(int income) {
-		this.income = income;
+	public void setIncome() {
+		this.income = audience * 50000;
 	}
+	public void setGenre(String genre) {
+		this.genre = genre;
+	}
+	
+	public void setInstrument(String instrument) {
+		this.instrument = instrument;
+	}
+	
+	public void setBand(boolean isBand) {
+		if(isBand == true) {
+			setArtistType("밴드 아티스트");
+		}
+		else{
+			setArtistType("솔로 아티스트");
+		}
+		this.isBand = isBand;
+	}
+	
+	
 	
 
 	//기획
@@ -128,6 +209,7 @@ class Musician extends Human{
 		//40%확률로 공연 성공 / 성공시 수입 2배 증가, 팬 수 2배 증가, 유투브 구독자 수 2배 증가
 		//만약 공연 실패시 수입 반토막, 팬수 반토막, 유투브 구독자 수 반토막
 		
+
 
 		int show() {
 		    //확률을 계산해줄 수 있는 배열 생성
@@ -150,31 +232,37 @@ class Musician extends Human{
 		}
 		
 		void successfulShow() {
-			int income = 0;
-			int fan = 0;
-			double youtube = 0.0;
+//			int income = 0;
+//			int fan = 0;
+//			double youtube = 0.0;
 			
-			income = this.income * 2; // this.income = income * 2;
-			fan = this.numberOfFan * 2; //this.numberOfFan(100) = this.numberOfFan(50) * 2
-			youtube = this.youtubeSubscribers * 0.5;
+			//income = this.income * 2; 
+			this.income *= 2;
+			//fan = this.numberOfFan * 2; 
+			this.numberOfFan *= 2;
+			//youtube = this.youtubeSubscribers * 0.5;
+			this.youtubeSubscribers *= 2;
 			System.out.println("축하합니다! 성공적인 공연이였습니다!");
-			System.out.println("현재 재산: " + income + "원\n팬 수: " + fan + "만명\n유투브 채널 구독자 수: " 
-								+ youtube +"k subscribers");
+			System.out.println("현재 재산: " + income + "원\n팬 수: " + numberOfFan + "만명\n유투브 채널 구독자 수: " 
+								+ youtubeSubscribers +"k subscribers");
 			
 		}
 		
 		//전 재산 반토막 / 팬수 반토막 / 유투브 조회 수 반토막
 		void failedShowResults() {
-			int income = 0;
-			int fan = 0;
-			double youtube = 0.0;
+//			int income = 0;
+//			int fan = 0;
+//			double youtube = 0.0;
 			
-			income = this.income / 2;//this.income *= 0.5; // this.income = 12325000
-			fan = this.numberOfFan / 2;//this.numberOfFan *= 0.5;
-			youtube = this.youtubeSubscribers * 0.5;//this.youtubeSubscribers =  Double.parseDouble(String.format("%.1f", youtubeSubscribers * 0.5));
+			//income = this.income / 2;
+			this.income *= 0.5;
+			//fan = this.numberOfFan / 2;
+			this.numberOfFan *= 0.5;
+			//youtube = this.youtubeSubscribers * 0.5;
+			this.youtubeSubscribers =  Double.parseDouble(String.format("%.1f", youtubeSubscribers * 0.5));
 			System.out.println("예상했던 관객수를 채우지 못해 성공적인 공연을 거두지 못했습니다..");
-			System.out.println("현재 재산: " + income + "원\n팬 수: " + fan + "만명\n유투브 채널 구독자 수: " + 
-								+ youtube +"k subscribers");
+			System.out.println("현재 재산: " + income + "원\n팬 수: " + numberOfFan + "만명\n유투브 채널 구독자 수: " + 
+								+ youtubeSubscribers +"k subscribers");
 			
 		}
 	
@@ -255,7 +343,62 @@ class Pianist extends Musician{
 	
 }
 
+class NewArtist extends Musician{
+	static Scanner sc = new Scanner(System.in);
+	public NewArtist() {
+		
+	}
+	
+	
+	
+	public NewArtist(String name, int age, String gender, String hometown, String dateOfBirth, String genre,
+			String instrument, boolean isBand, int numberOfFan, double youtubeSubscribers) {
+		super(name, age, gender, hometown, dateOfBirth, genre, instrument, isBand, numberOfFan, youtubeSubscribers);
+	}
+
+
+
+	static void addArtist(NewArtist[]na){
+		for (int i = 0; i < na.length; i++) {
+			System.out.print("이름 : "); na[i].setName(sc.next());
+			System.out.print("나이 : "); na[i].setAge(sc.nextInt());
+			System.out.print("성별 : "); na[i].setGender(sc.next());
+			System.out.print("출신 : "); na[i].setHometown(sc.next());
+			System.out.print("생년월일 : "); na[i].setDateOfBirth(sc.next());
+			System.out.print("음악 장르 : "); na[i].setGenre(sc.next());
+			System.out.print("악기 : "); na[i].setInstrument(sc.next());
+			System.out.print("유형 : \n1) 밴드 아티스트 \n2) 솔로 아티스트");
+			int num = sc.nextInt();
+			if(num == 1) {
+				na[i].setBand(true);
+			}
+			else if(num == 2) {
+				na[i].setBand(false);
+			}
+			System.out.println("팬 수(만 단위) : "); na[i].setNumberOfFan(sc.nextInt());
+			System.out.println("유투브 채널 구독자 수(k 단위) : "); na[i].setYoutubeSubscribers(sc.nextDouble());
+		}
+		
+	}
+	
+	static void showArtist(NewArtist[]na) {
+		System.out.println("이름\t나이\t성별\t출신\t\tDOB\t음악 장르\t악기\t아티스트 유형\t팬 수\t유투브 채널 구독자 수\t현재 수입");
+		for (int i = 0; i < na.length; i++) {
+			na[i].setAudience(r.nextInt(501)+0);
+			na[i].setIncome();
+			System.out.print(na[i].getName()+"\t"+ na[i].getAge()+"\t"+ na[i].getGender()+"\t\t" + na[i].getHometown() + "\t" +
+					na[i].getDateOfBirth() + "\t"+  na[i].getGenre() +"\t" + na[i].getInstrument() + "\t" + 
+					na[i].getArtistType()+ "\t" + na[i].getNumberOfFan() + "명\t" +
+					na[i].getYoutubeSubscribers()+ "명\t"+na[i].getIncome() + "만원\n");
+			
+		}
+	}
+	
+}
+
 public class ExtendsTest04_1_백성민 { 
+	
+	static NewArtist[] na = new NewArtist[1];
 	
 	public static void main(String[] args) {
 
@@ -267,30 +410,48 @@ public class ExtendsTest04_1_백성민 {
 //		Human artist = null;
 //		artist = gtr1;
 		
-		gtr1.printInfo();
-		
-		
-		System.out.println("Al Di Meola의 공연 결과");
-		int alResult = gtr1.show();
-//		System.out.println(result);
-		if(alResult==1) {
-			gtr1.successfulShow();
-		}else if(alResult==0) {
-			gtr1.failedShowResults();
+		for (int i = 0; i < na.length; i++) {
+			na[i] = new NewArtist();
 		}
-		System.out.println();
 		
-		//artist = piano1;
+		NewArtist.addArtist(na);
 		
-		piano1.printInfo();
-		System.out.println("Chick Corea의 공연 결과");
-		int chickResult = piano1.show();
-//		System.out.println(result);
-		if(chickResult==1) {
-			gtr1.successfulShow();
-		}else if(chickResult==0) {
-			gtr1.failedShowResults();
+		NewArtist.showArtist(na);
+		
+		
+		int result = na[0].show();
+		if(result==1) {
+			na[0].successfulShow();
+		}else if(result==0) {
+			na[0].failedShowResults();
 		}
+		
+				
+		
+		//gtr1.printInfo();
+//		
+//		
+//		System.out.println("Al Di Meola의 공연 결과");
+//		int alResult = gtr1.show();
+////		System.out.println(result);
+//		if(alResult==1) {
+//			gtr1.successfulShow();
+//		}else if(alResult==0) {
+//			gtr1.failedShowResults();
+//		}
+//		System.out.println();
+//		
+//		//artist = piano1;
+//		
+//		piano1.printInfo();
+//		System.out.println("Chick Corea의 공연 결과");
+//		int chickResult = piano1.show();
+////		System.out.println(result);
+//		if(chickResult==1) {
+//			piano1.successfulShow();
+//		}else if(chickResult==0) {
+//			piano1.failedShowResults();
+//		}
 		
 		
 
