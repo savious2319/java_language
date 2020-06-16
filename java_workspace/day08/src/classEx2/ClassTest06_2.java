@@ -67,7 +67,7 @@ class Musician {
  
 	void printMusician() {
 		
-		System.out.println(name +"\t\t" + age + "\t\t" + instrument + "\t\t" + recordSales +"\n");
+		System.out.println(name +"\t" + age + "\t" + instrument + "\t" + recordSales +"\n");
 	}
 	
 
@@ -75,14 +75,16 @@ class Musician {
 
 public class ClassTest06_2 {
 	
-	static Musician[] musician = new Musician[10];
+	static Musician[] musician = new Musician[20];
 	static Scanner sc = new Scanner(System.in);
 	
 	static void printMusician() {
 		System.out.println("No\tName\t\tAge\t\tInstrument\tRecordSales");
 		for (int i = 0; i < musician.length; i++) {
+			if(musician[i].getName() != null) {
 			System.out.print((i+1) + "\t"+musician[i].getName()+"\t\t"+ musician[i].getAge()+"\t\t"+
 							 musician[i].getInstrument() + "\t\t"+  musician[i].getrecordSales() + "\n");
+			}
 			
 		}
 	}
@@ -133,7 +135,7 @@ public class ClassTest06_2 {
 	static void addMusicianData() {
 		char ch = ' ';
 		for (int i = 0; i < musician.length; i++) {
-			
+			if(musician[i].getName() == null) {
 			sc.nextLine();
 			System.out.print("Enter name : "); musician[i].setName(sc.nextLine());
 			System.out.print("Enter age : "); musician[i].setAge(sc.nextInt()); sc.nextLine();
@@ -142,7 +144,7 @@ public class ClassTest06_2 {
 			System.out.println("Would you like to continue adding data? [y/n]"); ch = sc.next().charAt(0);
 			if(ch == 'n') {break;}
 			
-			
+			}
 		}
 	}
 
@@ -151,7 +153,9 @@ public class ClassTest06_2 {
 		String userInput = "";
 		System.out.println("Please select which musician you would like to change");
 		for (int i = 0; i < musician.length; i++) {
+			if(musician[i].getName() != null) {
 			System.out.println((i+1)+ ". " + musician[i].getName());
+			}
 		}
 		userChoice = sc.nextInt();
 		sc.nextLine();
@@ -160,7 +164,7 @@ public class ClassTest06_2 {
 				+ "1. name\n2. age\n3. instrument\n4. record sales\n5. quit");
 		userInput = sc.nextLine();
 		if(userInput.equals("name")) {
-			//sc.nextLine();
+	
 			System.out.print("Enter name : "); musician[userChoice-1].setName(sc.nextLine());
 		}
 		if(userInput.equals("age")) {
@@ -181,8 +185,13 @@ public class ClassTest06_2 {
 	static void removeMusician() {
 		System.out.println("Enter number: ");
 		int num = sc.nextInt();
-		if(num >= 1 && num <= 10 && musician[num-1] != null) {
-			musician[num-1] = null;
+		System.out.println("Deleting "+musician[num-1].getName()+"...");
+		if(num >= 1 && num <= 10 && musician[num-1].getName() != null) {
+			for (int i = num; i < musician.length; i++) {
+				musician[num-1] = musician[num];
+				//musician[num] = new Musician();
+				if(num == musician.length - 1) {musician[num] = new Musician();}
+			}
 			
 			
 		}
@@ -194,23 +203,23 @@ public class ClassTest06_2 {
 		for (int i = 0; i < musician.length; i++) {
 			musician[i] = new Musician();
 		}
-//		musician[0] = new Musician("Al", "1",1,"1");
-//		musician[1] = new Musician("Chick", "1",1,"1");
-//		musician[2] = new Musician("Keith", "1",1,"1");
-//		musician[3] = new Musician("James", "1",1,"1");
-//		musician[4] = new Musician("Pat", "1",1,"1");
-//		musician[5] = new Musician("Andy", "1",1,"1");
-//		musician[6] = new Musician("John", "1",1,"1");
-//		musician[7] = new Musician("Steve", "1",1,"1");
-//		musician[8] = new Musician("Eric", "1",1,"1");
-//		musician[9] = new Musician("Paul", "1",1,"1");
+		musician[0] = new Musician("Al", "1",1,"1");
+		musician[1] = new Musician("Chick", "1",1,"1");
+		musician[2] = new Musician("Keith", "1",1,"1");
+		musician[3] = new Musician("James", "1",1,"1");
+		musician[4] = new Musician("Pat", "1",1,"1");
+		musician[5] = new Musician("Andy", "1",1,"1");
+		musician[6] = new Musician("John", "1",1,"1");
+		musician[7] = new Musician("Steve", "1",1,"1");
+		musician[8] = new Musician("Eric", "1",1,"1");
+		musician[9] = new Musician("Paul", "1",1,"1");
 		
-		int choice = 0;
-		while(true) {
+		int choice = -1;
+		while(choice != 0) {
 		System.out.println("Musicians' Database\nPlease select the desired menu\n1. Print Musicians"
-							+ "\n2. Add Musician\n3. Insert Musician\n4. Change Data\n5. Remove Data\n6. Exit");
+							+ "\n2. Add Musician\n3. Insert Musician\n4. Change Data\n5. Remove Data\n0. Exit");
 		choice = sc.nextInt();
-		if(choice == 4) {break;}
+	
 		switch(choice) {
 		case 1: printMusician(); break;
 		case 2: addMusicianData(); break;
