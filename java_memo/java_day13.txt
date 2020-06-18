@@ -1,0 +1,227 @@
+day13
+
+추상 클래스
+ 1. 하위 클래스의 대표 클래스 만들어낸다! -> 다형성의 기반이 된다
+ 2. 하위에서 필수적으로 재정의해야할 메서드를 강제 시킬 수 있다!
+	- 메서드 운영에 편리하다!
+
+ 3. 추상메서드 : body가 없다!
+	abstract void fct();
+ 4. 추상메서드를 갖고 있는 클래스는 반드시 추상 클래스가 되어야한다
+
+	abstract class A{
+		추상메서드();
+	}
+
+	class B extends A{
+		여기에서는 A가 갖고 있는 추상메서드를 반드시 재정의 할 수 밖에 없다!
+		그렇지 않으면 B는 인스턴스를 생성할 수 없게 된다!
+		* 추상 클래스가 인스턴스화 될 수 없는 이유??? : 불완전한 메서드를 갖고 있기 때문에!
+			(그럼, 메서드만 완전하면 추상클래스도 인스턴스를 만들 수 있는가??--> 있다!)
+			----->	익명 클래스
+
+	}
+인터페이스
+ 1. 추상 메서드들로만 구성된 타입이다! (클래스의 한 종류이다)
+ 2. 생성자, 인스턴스변수, 일반 메서드를 갖을 수 없다.
+ 3. 오로지, 추상메서드 + 상수 필드만 갖을 수 있다.
+	* 상수(constant) : 자바에서는 final 키워드로 상수화 시킬 수 있다.
+				C, C++에서 const int MAX_NUM = 10;
+				자바에서	  final int MAX_NUM = 10;
+		*final 키워드를 클래스에 붙이면? 상속시키지 마라!
+		  	      메서드에 붙이면? 재정의 시키지 마라!
+
+ 4. 인터페이스 자체가 이미 추상화 개념을 갖고 있다. 따라서 메서드 앞에 abstract 키워드를 붙이지 않아도 된다!
+
+	interface InterA{
+
+		void fct(); //abstract를 생략해도 된다!
+	}
+
+	new InterA().fct(); ?? 안된다! fct()는 추상메서드니까 안된다!!
+
+	그럼,
+	class Some implements InterA{ //인터페이스 타입은 다른 클래스를 통해서 재정의한 후 메서드를 사용할 수 있다.
+				      //이때, 해당 클래스에 연결시킬 수 있는 키워드는 
+				      //"implements" 라고 해야 한다!
+		void fct(){ //InterA에 있는 fct를 반드시 재정의 할 수 밖에 없다!
+
+		}
+
+	}
+	new Some().fct(); 완전한(재정의된) fct를 사용할 수 있게 된다!!!!
+
+	class + class 연결 : extends
+	class + interface 연결 : implements
+
+	--------------------------------------------------
+
+	interface InterA{}
+	interface InterB{}
+	interface InterC{}
+
+	class TypeA implements InterA, InterB, InterC //불완전한 클래스이기때문에 다중 상속이 가능
+	{
+
+
+	}
+	인터페이스는 다중상속을 허용하는 이유 : 불완전한 메서드(추상 메서드) 선언문만 갖고 있기 때문에,
+				    다중상속을 허용한다.
+				    인터페이스 자체로는 인스턴스가 성립되지 않기 때문에,
+				    불완전한 메서드끼리 동시에(다중상속) 겹쳐서 쓸 수 있게 허용한다!
+
+			 	    "인터페이스는 다중 상속 허용"	
+				
+	interface InterA extends InterB, InterC //인터 + 인터 : extends 키워드로 상속시키자!
+	{
+
+	}
+
+	class TypeA implements InterA // 클래스 + 인터 : implements
+	{			      // 클래스 + 클래스 : extends
+
+
+	}					
+자바 1
+	자료형 변수 연산자 제어문 배열 
+	클래스1 (메서드, 클래스만들기, 접근지정자, getter/setter,생성자)
+	클래스2 (상속, 다형성, 재정의, 인터페이스, 추상클래스)
+
+자바 1 종료!!!
+======================================================================================================
+자바 2 - 패키지들 (자주 쓰는 패키지)
+	예외처리 Exception
+	java.lang 패키지 안에 있는 클래스들과 메서드들
+	내부 클래스
+	java.util
+		컬랙션, Scanner, 날짜
+
+	쓰레드
+	파일입출력
+	GUI (awt swing)			+네트워크, DB
+-----------------------------------------------------------
+1. 예외처리 == 에러(컴파일에러 -> 실행중에러 -> 논리에러)
+	- 실행 중에 더이상 실행이 불가한 상태 : 예외!!!
+	- 예외가 발생이 되면
+		java.lang.Exception 클래스에서 예외 항목에 따라 각각 대처할 수 있도록
+		클래스를 만들어 놨다!
+	- 대표적인 예외 종류
+		Exception 
+		IOException : 파일 입출력때 주로 등장하는 예외
+				(해당 위치에 파일이 없어요, 파일을 읽을 수 없어요~)
+		InterruptedException : Thread.sleep() 시 발생하는 예외
+
+		NullPointerException : 객체가 존재하지 않아요~
+		ArrayIndexOutofBoundsException : 배열 범위를 벗어 났어요~
+		NumberFormatException : 숫자 형식이 잘못됐습니다.
+		....
+	
+	소스를 작성하다가... 예외가 발생할 소지가 있다!!
+
+		10/3 -> 3
+		10/2 -> 5
+		10/0 -> 더이상 실행할 수 없는 상태!!! 예외(Exception)
+	
+		int num1 = 입력;
+		int num2 = 입력; <---- 0을 넣게 되면... 더이상 프로그램이 작동하지 않게 된다!!!
+
+		if(num2 != 0)  <--- 저수준의 예외처리!
+			syso(num1/num2);
+
+	일반적인 예외처리 : try catch() 블럭으로 처리한다!
+
+	- try catch의 문법
+
+			try{
+				예외가 발생할 여지가 있는 소스를 try 영역 안에다 써준다!
+				syso(num1/num2);
+
+			}catch(Exception e){
+				syso(e.get메세지());
+			}
+			"다음 소스로 계속 이어진다~!"
+
+	- try catch - 2
+
+			try{
+				소스1 <---- 배열
+				소스2 <---- 입력장치
+				소스3 <---- 숫자형식	
+
+			}catch(NumberFormat e){
+
+			}catch(ArrayIndex~~ e){
+
+			}catch(IOException~~ e){
+
+			}catch(Exception e){
+
+			}
+
+			예외가 발생하면 그 catch문으로 들어가서 처리하고 다른 catch문으로 안들어가고 그대로 빠져나간다 
+
+			catch(Exception e){ <---얘 때문에 아래에 있는 하위 Exception 라인이 실행할 수 없게 된다.
+					    <---모든 예외는 Exception의 하위 이기 때문에 Exception이  다
+						 받을 수 있다!!! Exception 맨 밑에다 쓰자!!
+			
+			}catch(NumberFormat e){  <---- 데드 코드
+
+			}catch(ArrayIndex~~ e){  <---- 데드 코드
+
+			}catch(IOException~~ e){  <---- 데드 코드
+			}
+			
+			
+	- try catch - 3  (finally 블럭)
+
+			try{
+				예외가 발생할 수 있는 소스들....
+			예외가 발생이 된다면... 
+			아래 catch문 중에 하나를 실행하고 전체 영역밖으로 나가게 된다!
+			이때, finally블럭은 받드시 실행하게 된다!
+
+			}catch(){
+
+			}catch(){
+
+			}finally{
+	
+			}
+			
+
+* 내일
+
+	예외처리 throws, throw
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
