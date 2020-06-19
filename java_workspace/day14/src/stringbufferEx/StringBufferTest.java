@@ -17,26 +17,29 @@ public class StringBufferTest {
 		String msg = "abc";
 		
 		
+		
+		
 		//StringBuffer msgF = "abc"; //????? String은 문자열 가공할 때 새로운 문자열을 만들지만\
 										// StringBuffer는 자기 자신을 새로 가공하기때문에 메모리에 낭비가 없다
 										// String하고 비슷하지만, 생성자로 인스턴스를 만들어야 쓸수 있음
-		StringBuffer msgF = new StringBuffer(msg);
+		StringBuffer mutuableMsg = new StringBuffer(msg);
 		
-		StringBuffer tmp = msgF.insert(2, "12"); // index 2 앞에다가 "12"를 넣어라
-		System.out.println(tmp);
+		mutuableMsg.insert(2, "12"); // index 2 앞에다가 "12"를 넣어라
+		//System.out.println(tmp);
+		System.out.println("msgF == "+mutuableMsg.toString());
+		mutuableMsg.insert(2, "이태원");
+		String immutableMsg = mutuableMsg.toString(); // buffer에 있는 문자열을 String 으로 고정시키겠다!
 		
-		String tmp2 = msgF.insert(2, "12").toString(); // buffer에 있는 문자열을 String 으로 고정시키겠다!
-		System.out.println(tmp2);
+		System.out.println("immutableMsg == " +immutableMsg);
 		
-		System.out.println(tmp);
 		
-		tmp =  new StringBuffer("0123456");
+		StringBuffer mutableMsg2 =  new StringBuffer("Travis");
 		
-		tmp = tmp.replace(1, 3, "AB");  // 1 <= "AB" < 3
-		System.out.println(tmp);
+		mutableMsg2.replace(1, 3, "Brian");  // 1 <= "AB" < 3
+		System.out.println("mutableMsg2 == " + mutableMsg2);
 		
-		tmp = tmp.replace(1, 5, "AB");
-		System.out.println(tmp);
+		mutableMsg2.replace(3, 6, "2020");
+		System.out.println("mutableMsg2 == "+ mutableMsg2);
 		
 		
 		
