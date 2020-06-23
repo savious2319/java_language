@@ -1,0 +1,134 @@
+day16
+
+어제
+-익명클래스 : 이름이 없는 클래스 -> 블럭만 존재한다.
+	   생성자옆에 붙는다! - 1회용이다!
+
+	   new 생성장()
+	   {
+		메서드 오버라이딩하려고!!!
+
+
+	   };  <- 익명 클래스 (바디)
+
+	------------------------------------	
+	   abstract class Type{
+
+		abstract void add();
+	   }
+	
+
+	   class Some{
+		Some(Type T){  //생성자!
+
+		}	
+
+	   }
+
+
+	   class Main{
+
+	  	 public static void main(String [] args){
+
+			Type t = new Type(){
+
+				void add(){
+				
+				}
+
+			};						
+
+			
+			Some s = new Some(new Type(){
+
+				void add(){}
+
+			});
+		   }
+
+
+	    }
+
+
+* 컬렉션 - 데이터의 구조화 (자료구조)
+  컬렉션 프레임워크   프레임워크 : 틀, 도구, 장비
+
+
+	자료구조를 사용하기 위해 만들어 놓은 도구(틀)
+
+	자료구조 : 형태분류
+		    Collection			(Map)  : 부모 인터페이스
+
+		List		Set		Map  :  인터페이스
+
+		Vector		HashSet		HashMap  :  클래스 - 실제 인스턴스화 해 사용할 클래스들
+		ArrayList	TreeSet
+
+
+		Collection list = new Hashset();  (가능하다. 다형성)
+
+	* 컬렉션 출력
+
+	1. -향상된 for문( = 빠른 for문, foreach문)
+	   -컬렉션에서만 쓸 수 있다. (배열, List, Map, Set)
+	2. Enumeration 객체를 이용해서 출력할 수 있다.
+	3. Iterator 객체를 이용해서 출력할 수 있다.
+
+	
+	* 컬렉션 저장
+	
+	1. 제너릭
+		클래스 타입<타입> 객체 = 인스턴스();
+
+		Some <List> some = new Some();
+
+		<List> 부분을 제너릭 이라고 부른다!
+
+		(컬렉션에서)생략이 가능하다.
+		생략할 경우 <Object>가 생략된 것으로 간주된다!
+
+		ArrayList list = new ArrayList();  <Object> 생략
+
+		ArrayList<MyType> list = new ArrayList<MyType>();
+		객체 list에다가 MyType의 인스턴스만 받겠다!
+
+
+========================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
