@@ -140,14 +140,17 @@ public class GenericTest02 {
 		
 		
 		//이순희 라는 사람의 이름을 이순이로 변경 해보기
+		boolean check = false;
 		for (Student student : list) {
 			String name = student.getName();
 			if(name.equals("이순희")) {
 				name = "이순이";
 				student.setName(name);
-			}else {
-				System.out.println("이순이" + "가 없습니다");
+				check = true;
 			}
+		}
+		if(!check) {
+		System.out.println("이순이" + "가 없습니다");
 		}
 		System.out.println(list);
 		
