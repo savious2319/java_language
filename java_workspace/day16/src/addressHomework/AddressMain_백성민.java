@@ -1,8 +1,9 @@
 package addressHomework;
 
-import java.nio.channels.ScatteringByteChannel;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
+
 
 /*
  	주소 찾기 예제
@@ -60,7 +61,6 @@ class MyException extends Exception {
 
 class Address {
 	static Scanner sc = new Scanner(System.in);
-
 	String si;
 	String gu;
 	String dong;
@@ -117,21 +117,27 @@ class Address {
 	}
 
 	void searchDong(ArrayList<Address> list) {
+		//Iterator<Address> iter = list.iterator();
+		boolean check = false;
 		String search = "";
 		System.out.print("찾고자하는 동 입력 : ");
 		search = sc.next();
-		try {
+		
 			for (int i = 0; i < list.size(); i++) {
 				if (list.get(i).getDong().equals(search)) {
 
-					throw new MyException(search+" 번지는 " + list.get(i).getBunji() + "번지 입니다");
+					System.out.println(search+" 번지는 " + list.get(i).getBunji() + "번지 입니다");
+					check = true;
 				}
 			}
-			
+			if(!check) {
 			System.out.println("해당 주소의 번지를 찾을 수 없습니다");
-		} catch (MyException e) {
-			System.out.println(e.getMessage());
-		}
+			}
+			
+//			while(iter.hasNext()) {
+//				if (iter.)
+//				System.out.println(iter.next());
+//			}
 	}
 
 	// for (Address address : list) {
@@ -143,21 +149,25 @@ class Address {
 	// }
 
 
-	void insertDong(ArrayList<Address> list) {
+	void addDong(ArrayList<Address> list) {
 		String si = "";
 		String gu = "";
 		String dong = "";
 		int bunji = 0;
+		Address address = new Address();
 		System.out.println("시를 입력하세요");
-		// address.setSi(sc.next());
-		si = sc.next();
+		address.setSi(sc.next());
+		//si = sc.next();
 		System.out.println("구를 입력하세요");
-		gu = sc.next();
+		address.setGu(sc.next());
+		//gu = sc.next();
 		System.out.println("동을 입력하세요");
-		dong = sc.next();
+		//dong = sc.next();
+		address.setDong(sc.next());
 		System.out.println("번지를 입력하세요");
-		bunji = sc.nextInt();
-		Address address = new Address(si, gu, dong, bunji);
+		//bunji = sc.nextInt();
+		address.setBunji(sc.nextInt());
+		//Address address = new Address(si, gu, dong, bunji);
 		list.add(address);
 	}
 
@@ -168,42 +178,79 @@ class Address {
 
 		Address address = new Address();
 
-//		for (int i = 0; i < list.size(); i++) {
-//
-//			if (list.get(i).getDong().equals(dong)) {
-//				System.out.println(list.get(i).getSi() + " 수정");
-//				list.get(i).setSi(sc.next());
-//				System.out.println(list.get(i).getGu() + " 수정");
-//				list.get(i).setGu(sc.next());
-//				System.out.println(list.get(i).getDong() + " 수정");
-//				list.get(i).setDong(sc.next());
-//				System.out.println(list.get(i).getBunji() + " 수정");
-//				list.get(i).setBunji(sc.nextInt());
-//				//address[0].setSi(sc.next());
-//				//list.set(i, );
-//			}
-//		}
-		boolean check = false;
 		for (int i = 0; i < list.size(); i++) {
+
 			if (list.get(i).getDong().equals(dong)) {
-				System.out.print("시 수정 : ");
-				address.setSi(sc.next());
-				System.out.print("구 수정 : ");
-				address.setGu(sc.next());
-				System.out.print("동 수정 : ");
-				address.setDong(sc.next());
-				System.out.print("번지 수정 : ");
-				address.setBunji(sc.nextInt());
-				list.set(i, address);
-				check = true;
+				System.out.println(list.get(i).getSi() + " 수정");
+				list.get(i).setSi(sc.next());
+				System.out.println(list.get(i).getGu() + " 수정");
+				list.get(i).setGu(sc.next());
+				System.out.println(list.get(i).getDong() + " 수정");
+				list.get(i).setDong(sc.next());
+				System.out.println(list.get(i).getBunji() + " 수정");
+				list.get(i).setBunji(sc.nextInt());
+				//address[0].setSi(sc.next());
+				//list.set(i, );
 			}
 		}
-		if(!check) {
-			System.out.println("수정하고 싶은 동을 찾을 수 없습니다\n");
-		}
+//		boolean check = false;
+//		for (int i = 0; i < list.size(); i++) {
+//			if (list.get(i).getDong().equals(dong)) {
+//				System.out.print("시 수정 : ");
+//				address.setSi(sc.next());
+//				System.out.print("구 수정 : ");
+//				address.setGu(sc.next());
+//				System.out.print("동 수정 : ");
+//				address.setDong(sc.next());
+//				System.out.print("번지 수정 : ");
+//				address.setBunji(sc.nextInt());
+//				list.set(i, address);
+//				check = true;
+//			}
+//		}
+//		if(!check) {
+//			System.out.println("수정하고 싶은 동을 찾을 수 없습니다\n");
+//		}
 
 	}
 
+	void insertDong(ArrayList<Address> list) {
+		String si = "";
+		String gu = "";
+		String dong = "";
+		int bunji = 0;
+		Address address = new Address();
+		System.out.println("시를 입력하세요");
+		address.setSi(sc.next());
+		//si = sc.next();
+		System.out.println("구를 입력하세요");
+		address.setGu(sc.next());
+		//gu = sc.next();
+		System.out.println("동을 입력하세요");
+		//dong = sc.next();
+		address.setDong(sc.next());
+		System.out.println("번지를 입력하세요");
+		//bunji = sc.nextInt();
+		address.setBunji(sc.nextInt());
+		//Address address = new Address(si, gu, dong, bunji);
+		try {
+		int index = 0;
+		address.allAddress(list);
+		System.out.println("몇 번째에 새로운 주소를 삽입하시겠습니까?");
+		index = sc.nextInt();
+		if(index<=0) {
+			throw new MyException("0보다 더 큰 수를 입력해주세요");
+		}
+		if(list.size() < index) {
+			throw new MyException(index+"번째는 존재하지않습니다");
+		}
+		
+		list.add(index-1, address);
+		}catch(MyException e) {
+			System.out.println(e.getMessage());
+		}
+		
+	}
 	void delete(ArrayList<Address> list) {
 		String dong = "";
 		System.out.println("삭제하고 싶은 동을 입력하세요 : ");
@@ -219,17 +266,24 @@ class Address {
 //			list.clear();
 //			
 //		}
-		System.out.println(dong+"의 주소를 삭제 했습니다");
 	}
 
 	void allAddress(ArrayList<Address> list) {
-//		for (Address address : list) {
-//			System.out.println(address);
-//		}
-		System.out.println("주소록");
-		for (int i = 0; i < list.size(); i++) {
-			System.out.println((i+1) +". "+ list.get(i));
+		int cnt = 0;
+		for (Address address : list) {
+			System.out.print((++cnt) + ". ");
+			System.out.println(address);
 		}
+		
+//		for (int i = 0; i < list.size(); i++) {
+//			System.out.println((i+1) +". "+ list.get(i));
+//		}
+		
+	Iterator<Address> iter = list.iterator();
+//		while(iter.hasNext()) {
+//			System.out.print((++cnt) + ". ");
+//			System.out.println(iter.next());
+//		}
 		System.out.println();
 	}
 
@@ -244,9 +298,10 @@ class Address {
 			System.out.println("주소록 메뉴");
 			System.out.println("1. 번지 찾기");
 			System.out.println("2. 주소 추가");
-			System.out.println("3. 주소 수정");
-			System.out.println("4. 주소 삭제");
-			System.out.println("5. 모든 주소 보기");
+			System.out.println("3. 주소 삽입");
+			System.out.println("4. 주소 수정");
+			System.out.println("5. 주소 삭제");
+			System.out.println("6. 모든 주소 보기");
 			System.out.println("0. 종료");
 			choice = sc.nextInt();
 
@@ -256,18 +311,21 @@ class Address {
 				break;
 
 			case 2:
-				address.insertDong(list);
+				address.addDong(list);
 				break;
 
 			case 3:
+				address.insertDong(list);
+				break;
+			case 4:
 				address.update(list);
 				break;
 
-			case 4:
+			case 5:
 				address.delete(list);
 				break;
 
-			case 5:
+			case 6:
 				address.allAddress(list);
 				break;
 			}
