@@ -117,6 +117,10 @@ class Address {
 
 	void searchDong(ArrayList<Address> list) {
 		// Iterator<Address> iter = list.iterator();
+		if (list.size() == 0) {
+			System.out.println("입련된 주소가 없습니다. 먼저 주소를 추가해 주세요\n");
+			return;
+		}
 		String search = "";
 		while (true) {
 			boolean check = false;
