@@ -165,7 +165,6 @@ class Address {
 		String dong = "";
 		System.out.print("수정하고 싶은 동을 입력하세요 : ");
 		dong = sc.next();
-		int idx = 0;
 
 		Address address = new Address();
 
@@ -220,13 +219,14 @@ class Address {
 //			list.clear();
 //			
 //		}
+		System.out.println(dong+"의 주소를 삭제 했습니다");
 	}
 
 	void allAddress(ArrayList<Address> list) {
 //		for (Address address : list) {
 //			System.out.println(address);
 //		}
-		
+		System.out.println("주소록");
 		for (int i = 0; i < list.size(); i++) {
 			System.out.println((i+1) +". "+ list.get(i));
 		}
