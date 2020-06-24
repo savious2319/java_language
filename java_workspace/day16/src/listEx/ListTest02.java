@@ -33,10 +33,9 @@ public class ListTest02 {
 		list.add(60);
 		
 		
+		
+		
 		//일반 for으로 점수, 총합 구해보기
-		
-		//빠른 for문으로 점수, 총합 구해보기
-		
 		System.out.println("일반 for 점수");
 		int sum = 0;
 		for (int i = 0; i < list.size(); i++) {
@@ -54,6 +53,7 @@ public class ListTest02 {
 		
 		
 		System.out.println();
+		//빠른 for문으로 점수, 총합 구해보기
 		sum = 0;
 		System.out.println("빠른 for문 점수");
 		for (Object tmp : list) {
