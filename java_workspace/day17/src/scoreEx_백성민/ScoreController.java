@@ -12,25 +12,26 @@ public class ScoreController {
 	private ArrayList<Score> list = new ArrayList<>();
 
 	private void add() {
-		
-		while(true) {
-		Score temp = new Score();
-		System.out.print("이름 : ");
-		temp.setName(sc.next());
-		temp.setIdNum(++cnt);
-		System.out.println(temp.getIdNum());
-		System.out.print("국어 성적 : ");
-		temp.setKorScore();
-		System.out.print("영어 성적 : ");
-		temp.setEngScore();
-		System.out.print("수학 성적 : ");
-		temp.setMathScore();
-		list.add(temp);
-		System.out.println("더 추가 하시려면 엔터 또는 종료하시려면 q를 누르세요");
-		sc.nextLine();
-		String choice = "";
-		choice = sc.nextLine();
-		if(choice.equals("q"))break;
+
+		while (true) {
+			Score temp = new Score();
+			System.out.print("이름 : ");
+			temp.setName(sc.next());
+			temp.setIdNum(++cnt);
+			System.out.println(temp.getIdNum());
+			System.out.print("국어 성적 : ");
+			temp.setKorScore();
+			System.out.print("영어 성적 : ");
+			temp.setEngScore();
+			System.out.print("수학 성적 : ");
+			temp.setMathScore();
+			list.add(temp);
+			System.out.println("더 추가 하시려면 엔터 또는 종료하시려면 q를 누르세요");
+			sc.nextLine();
+			String choice = "";
+			choice = sc.nextLine();
+			if (choice.equals("q"))
+				break;
 		}
 	}
 
@@ -95,38 +96,40 @@ public class ScoreController {
 				System.out.println("없는 학생 번호입니다. 다시 입력해 주세요");
 				continue;
 			}
-			System.out.println("수정할 항목을 선택하세요\n1. 이름\n2. 국어성적\n3. 영어성적\n4. 수학성적\n5. 전체수정\n6. 뒤로가기");
-			choice = sc.nextInt();
-			switch (choice) {
-			case 1:
-				System.out.print("수정할 이름 입력 : ");
-				list.get(updateNum - 1).setName(sc.next());
-				return;
-			case 2:
-				System.out.print("수정할 국어성적 입력 : ");
-				list.get(updateNum - 1).setKorScore();
-				return;
-			case 3:
-				System.out.print("수정할 영어성적 입력 : ");
-				list.get(updateNum - 1).setEngScore();
-				return;
-			case 4:
-				System.out.print("수정할 수학성적 입력 : ");
-				list.get(updateNum - 1).setMathScore();
-				return;
-			case 5:
-				System.out.print("수정할 이름 입력 : ");
-				list.get(updateNum - 1).setName(sc.next());
-				System.out.print("수정할 국어성적 입력 : ");
-				list.get(updateNum - 1).setKorScore();
-				System.out.print("수정할 영어성적 입력 : ");
-				list.get(updateNum - 1).setEngScore();
-				System.out.print("수정할 수학성적 입력 : ");
-				list.get(updateNum - 1).setMathScore();
-				return;
-			case 6:
-				break;
+			while (true) {
+				System.out.println("수정할 항목을 선택하세요\n1. 이름\n2. 국어성적\n3. 영어성적\n4. 수학성적\n5. 전체수정\n6. 종료");
+				choice = sc.nextInt();
+				switch (choice) {
+				case 1:
+					System.out.print("수정할 이름 입력 : ");
+					list.get(updateNum - 1).setName(sc.next());
+					break;
+				case 2:
+					System.out.print("수정할 국어성적 입력 : ");
+					list.get(updateNum - 1).setKorScore();
+					break;
+				case 3:
+					System.out.print("수정할 영어성적 입력 : ");
+					list.get(updateNum - 1).setEngScore();
+					break;
+				case 4:
+					System.out.print("수정할 수학성적 입력 : ");
+					list.get(updateNum - 1).setMathScore();
+					break;
+				case 5:
+					System.out.print("수정할 이름 입력 : ");
+					list.get(updateNum - 1).setName(sc.next());
+					System.out.print("수정할 국어성적 입력 : ");
+					list.get(updateNum - 1).setKorScore();
+					System.out.print("수정할 영어성적 입력 : ");
+					list.get(updateNum - 1).setEngScore();
+					System.out.print("수정할 수학성적 입력 : ");
+					list.get(updateNum - 1).setMathScore();
+					break;
+				case 6:
+					return;
 
+				}
 			}
 		}
 	}
@@ -170,23 +173,23 @@ public class ScoreController {
 			choice = sc.nextInt();
 			switch (choice) {
 			case 1:
-				adminDisplay();  //모든 학생 데이터 보기 (관리자용)
+				adminDisplay(); // 모든 학생 데이터 보기 (관리자용)
 				break;
 
 			case 2:
-				add();  //학생 데이터 추가
+				add(); // 학생 데이터 추가
 				break;
 
 			case 3:
-				insert(); //학생 데이터 삽입
+				insert(); // 학생 데이터 삽입
 				break;
 
 			case 4:
-				delete();  //학생 데이터 삭제
+				delete(); // 학생 데이터 삭제
 				break;
 
 			case 5:
-				update();  //학생 데이터 수정
+				update(); // 학생 데이터 수정
 				break;
 			}
 
