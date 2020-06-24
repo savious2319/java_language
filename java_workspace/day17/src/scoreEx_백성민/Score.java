@@ -1,25 +1,26 @@
 package scoreEx_백성민;
 
+import java.util.Scanner;
+
 public class Score {
 	private String name;
-	private int IdNum;
+	private int idNum;
 	private int korScore;
 	private int engScore;
 	private int mathScore;
 	private int totalScore;
 	private double avgScore;
-	
-	public Score() {}
-	
-	public Score(String name, int idNum, int korScore, int engScore, int mathScore, int totalScore, double avgScore) {
-		super();
+
+	public Score() {
+	}
+
+	public Score(String name, int idNum, int korScore, int engScore, int mathScore) {
+
 		this.name = name;
-		IdNum = idNum;
+		this.idNum = idNum;
 		this.korScore = korScore;
 		this.engScore = engScore;
 		this.mathScore = mathScore;
-		this.totalScore = totalScore;
-		this.avgScore = avgScore;
 	}
 
 	public String getName() {
@@ -27,7 +28,7 @@ public class Score {
 	}
 
 	public int getIdNum() {
-		return IdNum;
+		return idNum;
 	}
 
 	public int getKorScore() {
@@ -42,43 +43,68 @@ public class Score {
 		return mathScore;
 	}
 
-	public int getTotalScore() {
-		return totalScore;
-	}
-
-	public double getAvgScore() {
-		return avgScore;
-	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
 
-	public void setIdNum(int idNum) {   //관리자의 경우에만 바꿀 수 있다   (관리자 모드와 일반 학생 모드)
-		IdNum = idNum;
+	public void setIdNum(int idNum) { // 관리자의 경우에만 바꿀 수 있다 (관리자 모드와 일반 학생 모드)
+		this.idNum = idNum + 20200603;
 	}
 
-	public void setKorScore(int korScore) {
-		this.korScore = korScore;
-	}
-
-	public void setEngScore(int engScore) {
-		this.engScore = engScore;
-	}
-
-	public void setMathScore(int mathScore) {
-		this.mathScore = mathScore;
-	}
-
-	public void setTotalScore(int totalScore) {
-		this.totalScore = totalScore;
-	}
-
-	public void setAvgScore(double avgScore) {
-		this.avgScore = avgScore;
-	}
+	Scanner sc = new Scanner(System.in);
 	
-	
-	
-	
+	public void setKorScore() {
+		while (true) {
+			korScore = sc.nextInt();
+			if (korScore >= 0 && korScore <= 100) {
+				this.korScore = korScore;
+				break;
+			} else {
+				System.out.println("0~100점수 사이를 입력해 주세요");
+			}
+		}
+		System.out.println("정상적으로 입력되었습니다.");
+	}
+
+	public void setEngScore() {
+		while(true) {
+		engScore = sc.nextInt();
+		if (engScore >= 0 && engScore <= 100) {
+			this.engScore = engScore;
+			break;
+		} else {
+			System.out.println("0~100점수 사이를 입력해 주세요");
+		}
+		}
+		System.out.println("정상적으로 입력되었습니다.");
+	}
+
+	public void setMathScore() {
+		while(true) {
+			mathScore = sc.nextInt();
+		if (mathScore >= 0 && mathScore <= 100) {
+			this.mathScore = mathScore;
+			break;
+		} else {
+			System.out.println("0~100점수 사이를 입력해 주세요");
+
+		}
+		}
+		System.out.println("정상적으로 입력되었습니다.");
+	}
+
+	public int getTotalScore() {
+		return korScore + engScore + mathScore;
+	}
+
+	public double getAvgScore() {
+		return Double.parseDouble(String.format("%.1f", getTotalScore() / 3.0));
+	}
+
+	@Override
+	public String toString() {
+		return name + "\t" + idNum + "\t" + korScore + "점\t\t" + engScore + "점\t\t" + mathScore + "점\t\t" + getTotalScore()
+				+ "점\t\t" + getAvgScore() + "점";
+	}
+
 }
