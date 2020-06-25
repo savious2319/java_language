@@ -1,22 +1,27 @@
-package scoreEx_백성민;
+package scoreEx_백성민2;
 
 import java.util.Scanner;
 
 public class Score {
+	static int cnt = 20200600;
 	private String name;
-	private int idNum;
+	private int idNum; 
 	private int korScore;
 	private int engScore;
 	private int mathScore;
 	private int totalScore;
 	private double avgScore;
 
+	{
+		idNum = cnt++;  //인스턴스가 만들어질때마다 idNum을 증가시켜주세요
+		
+	}
+	
 	public Score() {}
 
-	public Score(String name, int idNum, int korScore, int engScore, int mathScore) {
+	public Score(String name, int korScore, int engScore, int mathScore) {
 
 		this.name = name;
-		this.idNum = idNum;
 		this.korScore = korScore;
 		this.engScore = engScore;
 		this.mathScore = mathScore;
@@ -46,8 +51,8 @@ public class Score {
 		this.name = name;
 	}
 	
-	public void setIdNum(int idNum) { // 관리자의 경우에만 바꿀 수 있다 (관리자 모드와 일반 학생 모드)
-		this.idNum = idNum + 20200603;
+	private void setIdNum(int idNum) { // 관리자의 경우에만 바꿀 수 있다 (관리자 모드와 일반 학생 모드)
+		this.idNum = idNum;
 	}
 	
 	public void adminIdNum(int idNum) {

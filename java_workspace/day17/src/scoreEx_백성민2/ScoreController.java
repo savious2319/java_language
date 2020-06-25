@@ -1,4 +1,4 @@
-package scoreEx_백성민;
+package scoreEx_백성민2;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -8,7 +8,6 @@ public class ScoreController {
 	Score score = new Score();
 	private static final String AdminId = "sbaek3";
 	private static final String AdminPw = "5238";
-	private int cnt;
 	private ArrayList<Score> list = new ArrayList<>();
 
 	private void add() {
@@ -17,8 +16,7 @@ public class ScoreController {
 			Score temp = new Score();
 			System.out.print("이름 : ");
 			temp.setName(sc.next());
-			temp.setIdNum(++cnt);
-			System.out.println("학번 : " +temp.getIdNum());
+			System.out.println(temp.getIdNum());
 			System.out.print("국어 성적 : ");
 			temp.setKorScore();
 			System.out.print("영어 성적 : ");
@@ -47,7 +45,7 @@ public class ScoreController {
 			Score temp = new Score();
 			System.out.print("이름 : ");
 			temp.setName(sc.next());
-			temp.setIdNum(++cnt);
+//			temp.setIdNum(++cnt);
 			System.out.println(temp.getIdNum());
 			System.out.print("국어 성적 : ");
 			temp.setKorScore();
@@ -209,15 +207,15 @@ public class ScoreController {
 	}
 
 	public void studentMode() {
-		String name = "";
+		int num = 0;
 		while (true) {
 			boolean check = false;
 			System.out.println("◆ 내 성적 보기 ◆");
-			System.out.print("이름을 입력하세요 : ");
-			name = sc.next();
+			System.out.print("학번을 입력하세요 : ");
+			num = sc.nextInt();
 			for (int i = 0; i < list.size(); i++) {
 
-				if (list.get(i).getName().equals(name)) {
+				if (list.get(i).getIdNum() == num) {
 					System.out.println("이름\t학번\t\t국어성적\t영어성적\t수학성적\t총점\t\t평균");
 					System.out.println(list.get(i));
 					System.out.println();
@@ -226,16 +224,16 @@ public class ScoreController {
 				}
 			}
 			if (!check) {
-				System.out.println("이름을 찾을 수 없습니다. 다시 입력해 주세요\n");
+				System.out.println("학번을 찾을 수 없습니다. 다시 입력해 주세요\n");
 			}
 		}
 	}
 
 	public void menu() {
 
-		list.add(new Score("백성민", 20200601, 89, 78, 88));
-		list.add(new Score("이순신", 20200602, 69, 100, 67));
-		list.add(new Score("홍길동", 20200603, 93, 67, 78));
+		list.add(new Score("백성민", 89, 78, 88));
+		list.add(new Score("이순신", 69, 100, 67));
+		list.add(new Score("홍길동", 93, 67, 78));
 
 		String id = "";
 		String pw = "";
