@@ -45,9 +45,9 @@ public class HashSetTest4 {
 		hs1.removeAll(hs2);
 		System.out.println("hs2랑 겹치는 요소를 hs1에서 지움 : "+hs1);
 		
-		System.out.println("set에 있는 요소가 비어 있니? : "+hs1.isEmpty());
+		System.out.println("set에 있는 요소가 비어 있니? : "+(hs1.isEmpty() ? "네" : "아니오"));
 		hs1.clear();
-		System.out.println("set에 있는 요소가 비어 있니? : "+hs1.isEmpty());
+		System.out.println("set에 있는 요소가 비어 있니? : "+(hs1.isEmpty() ? "네" : "아니오"));
 		
 		
 		

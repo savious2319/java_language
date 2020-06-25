@@ -1,6 +1,7 @@
 package setEx;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 
@@ -52,14 +53,17 @@ public class HashSetTest3 {
 		iter = setA.iterator();
 		while(iter.hasNext()){
 		Object temp = iter.next();
-		if(!setB.contains(temp))
-		setChaA_B.add(temp);
-		}
+		if(!setB.contains(temp)) //setB에 있는 값과 temp(setA)의 값을 비교한다
+		setChaA_B.add(temp);     //만약 setB에 있는 값이 temp에 없다면 리턴값이 false가 되고 !연산자때문에 true가 된다
+		}                        //그래서 setB에 없는 값, 즉 setA의 값이 setChaA_B에 들어간다!
+								 //만약 setB에 값이 setA에 있다면 리턴값이 true가 되고 !연산자때문에 false가 되서
+								 //if문에 안들어간다!
 		System.out.println("차집합 A-B : "+setChaA_B);
+		System.out.println();
 		// 차집합 B-A:
 		iter = setB.iterator();
-		while(iter.hasNext()){
-			Object temp = iter.next();
+		while(iter.hasNext()){          //setA에 있는 값이 setB에 있니? 있어 -> 그럼 true -> !true -> false ->if문에 안들어감!
+			Object temp = iter.next();  //setA에 있는 값이 setB에 있니? 없어 -> 그럼 false -> !false -> true ->if문에 들어감!
 			if(!setA.contains(temp))
 				setChaB_A.add(temp);
 		}
@@ -102,6 +106,8 @@ public class HashSetTest3 {
 			ar.add(temp);
 		}
 		System.out.println("ArrayList 합집합 : "+ar);
+		Collections.sort(ar);
+		System.out.println("ArrayList 합집합(오름차순) : "+ar);
 	}
 
 }

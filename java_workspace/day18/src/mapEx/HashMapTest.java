@@ -18,7 +18,7 @@ public class HashMapTest {
 		   유관순 98
 		   신사임당 75
 		 */
-		
+		//       key      value
 		HashMap<String, Integer> map = new HashMap<>();
 		
 		//map.put("홍길동", new Integer(96));

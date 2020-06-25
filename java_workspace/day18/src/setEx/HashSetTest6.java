@@ -29,7 +29,8 @@ public class HashSetTest6 {
 		//저장되어 있는 set의 요소들과 신규회원 정보를 비교해,
 		//신규회원이 add 될 수 있는지 없는지 여부를 살펴보자!
 		
-		Person newMember = new Person("아무개", 1234567); //주민번호가 동일한 객체가 set에 들어가려 하고 있다!
+		//Person newMember = new Person("아무개", 1234567); //주민번호가 동일한 객체가 set에 들어가려 하고 있다!
+		Person newMember = null;
 		
 		set.add(newMember);
 		//hashCode()를 부른다!  기존 3개의 해시코드하고 다르기 때문에!!!

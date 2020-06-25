@@ -3,7 +3,7 @@ package setEx;
 public class Person{
 	String name;
 	int juminbunho;
-
+	public Person() {}
 	public Person(String name, int juminbunho) {
 		super();
 		this.name = name;

@@ -13,7 +13,7 @@ import java.util.Set;
 public class HashMapTest3 {
 
 	public static void main(String[] args) {
-		
+		//       key      value
 		HashMap<String, String> map = new HashMap<>();
 		//       id        pw
 		map.put("ÀÌ¼ø½Å", "100");
