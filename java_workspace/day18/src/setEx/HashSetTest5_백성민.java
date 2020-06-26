@@ -26,8 +26,10 @@ public class HashSetTest5_백성민 {
 		
 		Random r = new Random();
 		
-		HashSet set1 = new HashSet(); //set1은 난수 6개를 넣을 객체
-		HashSet set2 = new HashSet(); //set2는 중복된 난수를 담을 객체
+		HashSet<Integer> set = new HashSet<>(); //set1은 난수 6개를 넣을 객체
+		ArrayList<Integer> list = new ArrayList<>(); //set2는 중복된 난수를 담을 객체 
+													 //ArrayList는 동일한 수가 들어와도 저장된다
+													 //Set으로 하면 동일한 수가 들어오면 튕겨져 나간다!!!!
 		int cnt1 = 0; //전체 카운트
 		int cnt2 = 0; // 동일한 난수 세는 카운트
 		int rNum = 0; // 난수를 저장할 변수
@@ -42,20 +44,32 @@ public class HashSetTest5_백성민 {
 //				break;
 //			}
 //		}
-		while(set1.size() < 6){   //set1.size() < 6 --> set1에 난수가 인덱스[0],[1],[2],[3],[4],[5]순으로 들어온다.
-																//[6] < 6 때 while문을 빠져서 6개의 난수를 출력한다
-			rNum = r.nextInt(45)+1; //1~45사이의 난수가 rNum에 대입된다
-			if(!set1.add(rNum)){  //처음에 난수가 입력된다
-				set2.add(rNum);   //입력이 성공되면 true라 리턴되고 !연산자때문에 false가 되서 if문을 빠져나간다
-				cnt2++;           //그리고 cnt1이 누적된다.
-			}                     //만약 같은 숫자가 있으면 false가 리턴되고 !연산자때문에 true가 되서 if문에 들어가
-			cnt1++;               //set2.add(rNum)에 입력되고 동일한 난수의 수를 구해주는 cnt2에 누적이 된다
-								  //그리고 if문을 나와서 다시 cnt1에 다시 누적이된다. 그래서 총 몇번만에 6개가 채워졌는지
-							   	  //알 수 있다
-	
+//		while(set1.size() < 6){   //set1.size() < 6 --> set1에 난수가 인덱스[0],[1],[2],[3],[4],[5]순으로 들어온다.
+//																//[6] < 6 때 while문을 빠져서 6개의 난수를 출력한다
+//			rNum = r.nextInt(45)+1; //1~45사이의 난수가 rNum에 대입된다
+//			if(!set1.add(rNum)){  //처음에 난수가 입력된다
+//				set2.add(rNum);   //입력이 성공되면 true라 리턴되고 !연산자때문에 false가 되서 if문을 빠져나간다
+//				cnt2++;           //그리고 cnt1이 누적된다.
+//			}                     //만약 같은 숫자가 있으면 false가 리턴되고 !연산자때문에 true가 되서 if문에 들어가
+//			cnt1++;               //set2.add(rNum)에 입력되고 동일한 난수의 수를 구해주는 cnt2에 누적이 된다
+//								  //그리고 if문을 나와서 다시 cnt1에 다시 누적이된다. 그래서 총 몇번만에 6개가 채워졌는지
+//							   	  //알 수 있다
+//	
+//		}
+		
+		while(set.size() < 6) {
+			if(!set.add(Integer.valueOf(r.nextInt(9)+1))) {
+				list.add(Integer.valueOf(r.nextInt(9)+1));
+				cnt2++;
+			}
+			cnt1++;
 		}
-		System.out.println("set1(6개의 난수) : " + set1 +" \n"+cnt1+"번 만에 로또숫자가 채워졌음");
-		System.out.println("set2(동일한 난수) : " + set2 +" "+cnt2+"개");
+		
+		
+		
+		
+		System.out.println("set1(6개의 난수) : " + set +" \n"+cnt1+"번 만에 로또숫자가 채워졌음");
+		System.out.println("set2(동일한 난수) : " + list +" "+cnt2+"개");
 		
 		
 		
@@ -66,7 +80,7 @@ public class HashSetTest5_백성민 {
 		//List타입의 (ArrayList)생성자값을 set1으로 한다.
 		
 		//ArrayList setList = new ArrayList(set1); 
-		List setList = new ArrayList(set1); 
+		List<Integer> setList = new ArrayList<>(set); 
 		Collections.sort(setList);
 		
 		

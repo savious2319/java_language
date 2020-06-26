@@ -11,6 +11,7 @@ public class ScoreController {
 	private int cnt;
 	private ArrayList<Score> list = new ArrayList<>();
 
+	
 	private void add() {
 
 		while (true) {

@@ -32,7 +32,8 @@ public class HashSetTest6 {
 		//Person newMember = new Person("아무개", 1234567); //주민번호가 동일한 객체가 set에 들어가려 하고 있다!
 		Person newMember = null;
 		
-		set.add(newMember);
+		//System.out.println(newMember.hashCode());
+		System.out.println(set.add(newMember));
 		//hashCode()를 부른다!  기존 3개의 해시코드하고 다르기 때문에!!!
 		//set에 추가될 수 있다!
 		//equals() 메서드를 부를 필요가 없어졌다!
