@@ -163,7 +163,7 @@ public class QuizShowController {
 
 	void adminMenu() {
 		int choice = -1;
-		String adminOption = "1. 문제 추가하기\n0. 뒤로가기";
+		String adminOption = "1. 문제 추가하기\n2. 문제 삭제하기\n0. 뒤로가기";
 		while (choice != 0) {
 			int cnt = 0;
 			String questionSet = "";
@@ -174,10 +174,18 @@ public class QuizShowController {
 				questionSet += "문제 " + (++cnt) + ") " + tmp.getKey() + " = " + tmp.getValue() + "\n";
 			}
 			// System.out.println(questionSet);
-			choice = Integer.parseInt(JOptionPane.showInputDialog("★ 퀴즈 리스트 ★\n" + questionSet + "\n" + adminOption));
+			try {
+				choice = Integer.parseInt(JOptionPane.showInputDialog("★ 퀴즈 리스트 ★\n" + questionSet + "\n" + adminOption));
+			} catch (NumberFormatException e) {
+				JOptionPane.showMessageDialog(null, "번호를 선택해 주세요");
+				continue;
+			}
 			switch (choice) {
 			case 1:
 				addQuiz();
+				break;
+			case 2:
+				deleteQuiz();
 				break;
 			}
 		}
@@ -186,9 +194,18 @@ public class QuizShowController {
 	void addQuiz() {
 		int option = 0;
 		while (option != 1) {
-			String question = JOptionPane.showInputDialog("◆ 문제 ◆\n영어 or 한글 단어 입력");
-			String answer = JOptionPane.showInputDialog("◆ 답 ◆\n영어 or 한글 단어 입력");
-			word.put(question, answer);
+			try {
+				String question = JOptionPane.showInputDialog("◆ 문제 ◆\n영어 or 한글 단어 입력");
+				String answer = JOptionPane.showInputDialog("◆ 답 ◆\n영어 or 한글 단어 입력");
+				if(question.equals("") && answer.equals("")) {
+					JOptionPane.showMessageDialog(null, "단어를 입력해 주세요");
+					continue;
+				}
+				word.put(question, answer);
+			} catch (NullPointerException e) {
+				JOptionPane.showMessageDialog(null, "단어를 입력해 주세요");
+				continue;
+			}
 			int cnt = 0;
 			String questionSet = "";
 			Set<Map.Entry<String, String>> set = word.entrySet();
@@ -200,6 +217,38 @@ public class QuizShowController {
 			option = JOptionPane.showConfirmDialog(null, "★ 퀴즈 리스트 ★\n" + questionSet + "\n더 추가하시겠습니까?", "문제추가",
 					JOptionPane.YES_NO_OPTION);
 		}
+	}
+	
+	void deleteQuiz() {
+		String deleteQuestion = "";
+		String deleteAnswer = "";
+		int cnt = 0;
+		String questionSet = "";
+		Set<Map.Entry<String, String>> set = word.entrySet();
+		Iterator<Map.Entry<String, String>> iter = set.iterator();
+		while (iter.hasNext()) {
+			Map.Entry<String, String> tmp = iter.next();
+			questionSet += "문제 " + (++cnt) + ") " + tmp.getKey() + " = " + tmp.getValue() + "\n";
+			
+		}
+		
+		deleteQuestion = JOptionPane.showInputDialog(questionSet+ "삭제할 문제를 입력해주세요");
+		deleteAnswer = JOptionPane.showInputDialog(questionSet+ "삭제할 답을 입력해주세요");
+		
+		word.remove(deleteQuestion, deleteAnswer);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 
 }
