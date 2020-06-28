@@ -175,7 +175,8 @@ public class QuizShowController {
 			}
 			// System.out.println(questionSet);
 			try {
-				choice = Integer.parseInt(JOptionPane.showInputDialog("★ 퀴즈 리스트 ★\n" + questionSet + "\n" + adminOption));
+				choice = Integer
+						.parseInt(JOptionPane.showInputDialog("★ 퀴즈 리스트 ★\n" + questionSet + "\n" + adminOption));
 			} catch (NumberFormatException e) {
 				JOptionPane.showMessageDialog(null, "번호를 선택해 주세요");
 				continue;
@@ -197,7 +198,7 @@ public class QuizShowController {
 			try {
 				String question = JOptionPane.showInputDialog("◆ 문제 ◆\n영어 or 한글 단어 입력");
 				String answer = JOptionPane.showInputDialog("◆ 답 ◆\n영어 or 한글 단어 입력");
-				if(question.equals("") && answer.equals("")) {
+				if (question.equals("") && answer.equals("")) {
 					JOptionPane.showMessageDialog(null, "단어를 입력해 주세요");
 					continue;
 				}
@@ -218,37 +219,44 @@ public class QuizShowController {
 					JOptionPane.YES_NO_OPTION);
 		}
 	}
-	
+
 	void deleteQuiz() {
+		int option = 0;
 		String deleteQuestion = "";
 		String deleteAnswer = "";
-		int cnt = 0;
-		String questionSet = "";
-		Set<Map.Entry<String, String>> set = word.entrySet();
-		Iterator<Map.Entry<String, String>> iter = set.iterator();
-		while (iter.hasNext()) {
-			Map.Entry<String, String> tmp = iter.next();
-			questionSet += "문제 " + (++cnt) + ") " + tmp.getKey() + " = " + tmp.getValue() + "\n";
-			
+
+		while (option != 1) {
+			int cnt = 0;
+			String questionSet = "";
+			Set<Map.Entry<String, String>> set = word.entrySet();
+			Iterator<Map.Entry<String, String>> iter = set.iterator();
+			while (iter.hasNext()) {
+				Map.Entry<String, String> tmp = iter.next();
+				questionSet += "문제 " + (++cnt) + ") " + tmp.getKey() + " = " + tmp.getValue() + "\n";
+			}
+
+			while (true) {
+				deleteQuestion = JOptionPane.showInputDialog(questionSet + "\n삭제할 문제를 입력해주세요");
+				if (!word.containsKey(deleteQuestion)) {
+					JOptionPane.showMessageDialog(null, "문제에 속하지않는 단어를 입력하셨습니다. 다시 입력해 주세요");
+				} else
+					break;
+			}
+
+			while (true) {
+				deleteAnswer = JOptionPane.showInputDialog(questionSet + "\n삭제할 답을 입력해주세요");
+
+				if (!word.containsValue(deleteAnswer) || !deleteAnswer.equals(word.get(deleteQuestion))) {
+					JOptionPane.showMessageDialog(null, "답에 속하지않는 단어를 입력하셨습니다. 다시 입력해 주세요");
+				} else
+					break;
+			}
+			word.remove(deleteQuestion, deleteAnswer);
+
+			option = JOptionPane.showConfirmDialog(null, "더 삭제 하시겠습니까?", "문제 삭제", JOptionPane.YES_NO_OPTION);
+
 		}
-		
-		deleteQuestion = JOptionPane.showInputDialog(questionSet+ "삭제할 문제를 입력해주세요");
-		deleteAnswer = JOptionPane.showInputDialog(questionSet+ "삭제할 답을 입력해주세요");
-		
-		word.remove(deleteQuestion, deleteAnswer);
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
 	}
 
 }
