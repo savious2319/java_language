@@ -1,10 +1,10 @@
-package HashMapQuiz1_3_¹é¼º¹Î;
+package HashMapQuiz1_3_¹é¼º¹Îv1;
 
 public class QuizShowMain {
 
 	public static void main(String[] args) {
 
-		
+		new QuizShowController().quizMenu();
 		
 	}
 
