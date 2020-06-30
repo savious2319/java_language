@@ -1,0 +1,84 @@
+day21
+
+금일
+문자열 분리
+1. split("구분기호")
+2. Scanner.useDelimeter("구분기호")
+--------------------------------------
+3. (*) StringTokenizer 문자열분리에 특화되어 있는 클래스다!
+
+========================================================================
+Thread 쓰레드 java.lang 패키지
+
+응용프로그램 
+ -처리단위
+	프로세스
+	  -쓰레드
+	  -쓰레드
+
+ -쓰레드 : 프로세스(응용프로그램)에서 처리할 수 있는 세분화된 작업 단위
+ -하나의 프로세스(응용프로그램) 내부에 여러개의 쓰레드를 두고 분산 작업(병렬 작업)을 진행 한다.
+ -쓰레드 생성방법
+	1)Thread 클래스 이용
+		class MyThread extends Thread{
+			run(){}
+
+		}
+		
+		main(){
+			new MyThread().start();
+
+
+		}
+
+		Thread th = new Thread()
+		th.start();  //start()메서드는 run() 메서드를 실행한다
+
+	2)Runnalbe 인터페이스 이용  //Runnable 인터페이스는 start()메서드가 없다!
+		//사용자가 정의할 쓰레드 클래스
+		class MyThread extends Frame implements Runnable{
+			@Override
+			void run(){
+				//쓰레드로 실행할 소스!!!			
+
+			}
+		}
+
+
+		class Type{
+			main(){
+				Thread th = new Thread(new MyThread());
+				th.start();
+
+			}
+
+
+		}
+
+ -쓰레드 사용시 재정의 메서드
+	void run(){
+		쓰레드에서 실제 수행될 내용을 재정의!
+	}
+
+ -쓰레드 발동
+	쓰레드 객체.start() 메서드
+
+	run()으로 실행하게 되면, 운영체제(스케줄러)가 인식하지 못한다!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
