@@ -1,0 +1,44 @@
+day22
+
+ - io 패키지
+				대상
+  소스파일	 input (읽어온다)		HDD - File
+  (ram)  output (쓴다)		test.txt
+  	
+  		stream (데이터를 읽거나 쓸때의 "흐름")
+	
+		inputStream
+		outputStream
+
+
+  File 입출력
+		FileInputStream		read
+		FileOutputStream	write
+
+  FileStream
+		단방향만 지원한다
+		읽어오면서 쓸 수는 없다!  
+		읽기 스트림을 적용한 실행 한 후,
+		쓰기 스트림을 실행해야 한다. 	
+
+	- File 클래스
+		"" 안에 디렉토리+폴더+파일등이 있을 때,
+		경로를 실제 접근할 수 있는 경로로 변환시켜주는
+		클래스다!
+		파일클래스를 통해, 파일에 대한 여러가지 정보
+		(생성 날짜, 변경가능 여부, 디렉터리니(폴더니?),
+			파일이니? 메서드로 지원하고 있다)
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
