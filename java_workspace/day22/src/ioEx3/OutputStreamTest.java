@@ -3,6 +3,7 @@ package ioEx3;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Scanner;
 
 /*
  	 output :
@@ -23,7 +24,7 @@ import java.io.IOException;
 public class OutputStreamTest {
 
 	public static void main(String[] args) {
-
+		Scanner sc = new Scanner(System.in);
 		FileOutputStream fos = null;
 		
 		try {
@@ -33,9 +34,17 @@ public class OutputStreamTest {
 			//두번째 매개변수 append : 기존에 파일이 있으면 계속 이어쓰기 하겠다!
 			fos = new FileOutputStream("fileWriter.txt", true);
 			
-			String msg = "Hello, 즐거운 하루!!";
-			fos.write(msg.getBytes()); // getBytes() : String을 byte[]로 리턴해주는 메서드
-			
+			String msg = "";
+			while(true) {
+				if (msg.equals("exit")) {break;}
+				System.out.println("입력 : ");
+				msg = sc.nextLine();
+				fos.write(msg.getBytes());
+				fos.flush();
+			}
+//			String msg = "Hello, 즐거운 하루!!";
+//			fos.write(msg.getBytes()); // getBytes() : String을 byte[]로 리턴해주는 메서드
+//			msg = "잘지내세요?";
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {

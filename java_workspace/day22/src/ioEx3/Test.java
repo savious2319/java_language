@@ -4,37 +4,21 @@ import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Scanner;
 
-/*
- 	java 메모장
- 			java_day01.txt
- 	
- 	D:\GB_0900_05_BSM(다른 폴더나 파일 넣지말아주세요)\java_language\java_memo
- 	
- 	1. 해당 폴더에 파일들을 쭉 보여준다.
- 	2. 읽어올 파일명을 입력한다.
- 	3. 파일의 내용을 콘솔에 출력하자!
- 	4. 저장할 때는 파일명끝에 cpy 등을 붙이자!
- 			java_day01cpy.txt 저장시키자!
- 					  (1)
- 					  (2)
- 					  (3)
- 			
- */
-public class BufferedOutputStreamTest2 {
-
+public class Test {
 	public static void main(String[] args) {
+
 		Scanner sc = new Scanner(System.in);
 
 		FileInputStream fis = null;
 		BufferedInputStream bis = null;
-		String path = "D:\\GB_0900_05_BSM(다른 폴더나 파일 넣지말아주세요)\\java_language\\java_memo";
+		String path = "C:\\Users\\Administrator\\Desktop\\새 폴더\\";
 		File f = new File(path);
-
+		//System.out.println(f.getAbsolutePath());
+		
 		File[] files = f.listFiles();
 		for (File memo : files) {
 			String fullPath = memo.getAbsolutePath();
@@ -48,29 +32,28 @@ public class BufferedOutputStreamTest2 {
 		file = sc.next();
 		File filePath = new File(f, file);
 		
-		//System.out.println(filePath);
-		int pos = file.lastIndexOf(".");   //java
+		System.out.println(filePath);
+		int pos = file.lastIndexOf(".");
 		String fName = file.substring(0, pos);
 		System.out.println(fName);
 		String ext = file.substring(pos);
 		System.out.println(ext); // .txt
 		System.out.println();
-		
 		try {
 
 			// fis = new FileInputStream("D:\\GB_0900_05_BSM(다른 폴더나 파일넣지말아주세요)\\java_language\\java_memo\\" + file);
 			// fis = new FileInputStream(path + "\\" + file);
-			fis = new FileInputStream(filePath);
-			bis = new BufferedInputStream(fis);
+			fis = new FileInputStream(filePath); //FileInputStream은 filePath의 파일을 가져온다!
+			bis = new BufferedInputStream(fis); // 파일을 BufferedInputStream에 담아둔다!
 			byte[] b = new byte[bis.available()];
 			bis.read(b);
 			String str = new String(b);
 			System.out.println(str);
 
+			
 			sc.nextLine();
 			System.out.println("새로 입력할 내용: ");
 			String msg = sc.nextLine();
-			
 			
 			int cnt = 0;
 			String choice = "";
@@ -79,24 +62,35 @@ public class BufferedOutputStreamTest2 {
 			//File cpyFile = new File(f, newFile);
 			File cpyFile = new File(f + "\\" + newFile);
 			
-			
+			while (true) {
 				System.out.println("파일을 저장하시겠습니까? [y/n]");
 				choice = sc.next();
+				if (choice.equalsIgnoreCase("n"))
+					break;
 				if (choice.equalsIgnoreCase("y")) {
-					
+					while (true) {
 						if (!cpyFile.exists()) {
-							FileOutputStream fos = new FileOutputStream(cpyFile);
-							BufferedOutputStream bos = new BufferedOutputStream(fos);
+							FileOutputStream fos = new FileOutputStream(cpyFile); //javaTestcpy.txt (x) C:\\Users\\Administrator\\Desktop\\새 폴더\\javaTestcpy.txt
+							BufferedOutputStream bos = new BufferedOutputStream(fos, 200); // fos의 파일을 잠시 가지고 있다
+							bos.write(msg.getBytes()); 
+							bos.flush();
+							System.out.println("다시 입력 : ");
+							msg = sc.next();
+							
 							bos.write(msg.getBytes());
-//					bos.flush();
-//					
-					bos.close();
+							bos.write(msg.getBytes()); 
+					bos.close(); //close()를 실행할때  flush()도 호출한다
 					fos.close();
 							System.out.println(cpyFile.getName() + "저장완료");
-						} 					
-				}
-				else if(choice.equalsIgnoreCase("n")) {}
-			
+							break;
+						} else {
+							++cnt;
+							newFile = fName + "cpy(" + cnt + ")" + ext;
+							cpyFile = new File(f + "\\" + newFile);
+						}
+					} // end of while
+				} //end of if 
+			} // end of while
 			
 //					if(filePath.exists()) {
 //						String newFile2 = fName + "cpy" + ext;
@@ -118,6 +112,6 @@ public class BufferedOutputStreamTest2 {
 
 		System.out.println("프로그램 종료");
 
+	
 	}
-
 }
