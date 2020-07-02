@@ -1,0 +1,130 @@
+day23
+
+ -GUI (awt)
+
+
+ -프로젝트 조별 회의 진행
+ -금요일, 1차 초안 발표 진행
+ -1차 초안 : 주제, 개인별 과업, 사용기술, 최종목표
+
+ -월요일 팀체제 자리 개편
+ -반장
+============================================================================
+
+ GUI  			<->  	 	CUI
+ 그래픽 유저 인터페이스		     콘솔 유저 인터페이스
+ (키보드 + 마우스)                       (키보드)
+
+자바 : awt 패키지 -> GUI 환경에 대응하기 위한 프로그래밍 라이브러리를 제공하는 패키지
+
+자바 GUI는...
+	awt --> swing -->       java fx
+          (라이브러리 제공, jdk)   (플러그 인) + 화면디자인, XML
+
+
+ awt : Abstract Window Toolkit
+       버튼, 프레임, 레이블, 체크박스, 이벤트 .. : 컴포넌트
+       awt 고유의 화면 디자인을 갖고 있다!
+	(swing은 운영체제에서 지원하는 모양대로 디자인이 따라간다)
+
+		awt 패키지의 최상위
+
+ 	1.	컴포넌트 (최상위) Component
+	
+	1)버튼(Button)  2)Label  3)java.awt.List  4)Choice  5)CheckBox  6)Scrollbar 7)Canvas || 8)Container(*)
+	    JButton      JLabel(J가 붙으면 Swing이다!)
+
+		        8)Container(*)
+		            |
+		Panel    ScrollPane   Window
+					|
+				 Dialog    Frame(★)
+				    |
+			       FileDialog
+				
+
+	2.	    MenuComponent
+		           |
+		MenuBar	 	MenuItem
+	 CheckboxMenuItem          |
+				 Menu
+
+
+	3. 이벤트 : Listener (수신자)
+		MouseListener
+		WindowListener
+		KeyListener
+		...
+		외부로부터 동작이 발생했을 때
+		이를 수신해서 처리하는 인터페이스(중요함)
+		(동작 : 키보드를 누른다던지, 마우스 클릭, 이동 등)
+
+
+		리스너는 인터페이스!! 따라서, 상속받는 클래스에서는 이벤트 내용에 따라
+		필요한 동작(클릭, 릴리스, 프레스...등)에 해당하는 메서드를 "재정의"해서 쓰면 된다.
+		
+		이때, 자주 쓰는 이벤트라면.. 별도의 이벤트 처리 클래스를 만들면 되고,
+		한번만 실행할 이벤트라면, "익명 클래스"로 재정의해서 쓰자!
+		
+	예) 내가 만든 클래스는 프레임이 있고, 프레임에 이벤트가 걸리면 이를 처리하고 싶다!
+
+		class MyType extends Frame implements WindowListener{
+
+			MyType(){
+				super(); Frame
+				this : MyType이긴 하지만 Frame의 주요 메서드를 사용한다!
+				(this. 생략할 수 있다)add();
+
+			}
+			
+			//필수 재정의!!!
+			void 윈도우창 닫을 때(){}
+			void 윈도우창 열때(){}
+			void 윈도우창 최소화 할 때(){}
+			.... 재정의해야 할 메서드가 8개
+
+
+		}
+
+	예-2)	이때, 불필요한 메서드까지 다 재정의 해야할 상황이 된다.
+		여러개의 재정의 메서드를 관리하기 힘들어서...
+		Adapter 라는 "추상 클래스"를 만들었다.
+
+		class MyType extends Frame, WindowAdapter(x) {
+				"추상 클래스 다중상속 지원불가"
+
+			MyType(){
+				//Frame(this)
+
+				this.add(Mouse)Listener(리스너객체를 매개변수로 넣어주세요!)
+				this.addWindowListener( new WindowListener(){
+					8개의 메서드를 모두 재정의!!!! -> 너무 복잡하고 관리가 안된다!
+								   이럴때 Adapter를 쓰자
+
+				} );
+				
+				this.addWindowListener( new WindowAdapter(){
+				
+					//이 메서드만 불러내서 재정의 하면 된다!					
+					void 윈도우닫을때(){
+
+					}				
+
+				} );
+
+			}
+
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
