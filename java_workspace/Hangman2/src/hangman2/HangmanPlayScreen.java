@@ -16,6 +16,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Random;
 
 import javax.sound.sampled.AudioInputStream;
@@ -119,17 +120,22 @@ public class HangmanPlayScreen extends JFrame implements ActionListener {
 		selectedTheme = theme;
 
 		while (true) {
-			random.add(r.nextInt(list.size()));   // 랜덤한 번호 나오게 하기
+			random.add(Integer.valueOf(r.nextInt(list.size())));   // 랜덤한 번호 나오게 하기
 			if (random.size() == 5) {
 				break;
 			}
 		}
 		
+		System.out.println("random\n" + random);
+		
+		List<Integer> randomNum = new ArrayList<>(random);
+		Collections.shuffle(randomNum);
+		System.out.println("randomNum\n" + randomNum);
 		questionNum = new int[5];
 		
-		Iterator<Integer> iter = random.iterator();
-		for (int i = 0; i < random.size(); i++) {
-			questionNum[i] = iter.next();
+		
+		for (int i = 0; i < randomNum.size(); i++) {
+			questionNum[i] = randomNum.get(i);
 			System.out.println(questionNum[i]);
 		}
 		
